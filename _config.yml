@@ -1,1 +1,9 @@
+title: Flobro
+tagline: Floating Browser Window
+production_url : https://flobro.app
 theme: jekyll-theme-cayman
+sass:
+  sass_dir: assets/_sass
+author :
+  name : Flobro
+  github : flobro
