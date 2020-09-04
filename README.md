@@ -1,37 +1,43 @@
-## Welcome to GitHub Pages
+# Flobro Website
+
+The public website of Flobro, <https://flobro.app>, runs on Github Pages with [Jekyll](https://jekyllrb.com/).
 
 You can use the [editor on GitHub](https://github.com/flobro/flobro.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+## Getting started
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Prerequisites
 
-```markdown
-Syntax highlighted code block
+1. [Ruby](https://www.ruby-lang.org/en/downloads/) (version 2.5.0 or above)
+1. [RubyGems](https://rubygems.org/pages/download) (check: `gem -v`)
+1. [GCC](https://gcc.gnu.org/install/) and [Make](https://www.gnu.org/software/make/) (check: `gcc -v`, `g++ -v` and `make -v`)
+1. A clone of this repo.
 
-# Header 1
-## Header 2
-### Header 3
+### Installation
 
-- Bulleted
-- List
+1. [Install Jekyll](https://jekyllrb.com/docs/installation/).
 
-1. Numbered
-2. List
+### Running locally
 
-**Bold** and _Italic_ and `Code` text
+1. Open Terminal.
+1. Run the Jekyll site locally:
 
-[Link](url) and ![Image](src)
-```
+    ```
+    bundle exec jekyll serve
+    ```
+1. To preview your site, in your web browser, navigate to http://localhost:4000.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+## Markdown
+
+See [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+
+## Jekyll Themes
 
 Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/flobro/flobro.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
+## Support
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Having trouble with Pages? Check out the [documentation](https://docs.github.com/categories/github-pages-basics/).
