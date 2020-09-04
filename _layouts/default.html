@@ -54,13 +54,6 @@
             <img src="{{ '/assets/images/chrome-web-store-badge.svg?v=' | append: site.github.build_revision | relative_url }}" alt="Available in the Chrome Web Store" class="web-store-badge">
         </a>
     </p>
-    <p class="mb-0">
-        <button onclick="chrome.webstore.install()" id="install-button" class="btn" >Download Flobro</button>
-    </p>
-    <script>
-        if (!chrome || chrome.app.isInstalled)
-            document.getElementById('install-button').style.display = 'none';
-    </script>
     <a href="https://github.com/flobro/flobro-chrome-app" class="btn btn-small">View source on GitHub</a>
     {% if site.show_downloads %}
     <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
