@@ -1,5 +1,7 @@
 # Flobro Website
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=flobro_flobro-website&metric=alert_status)](https://sonarcloud.io/dashboard?id=flobro_flobro-website)
+
 The public website of Flobro, <https://flobro.app>, runs on Github Pages with [Jekyll](https://jekyllrb.com/).
 
 You can use the [editor on GitHub](https://github.com/flobro/flobro.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
