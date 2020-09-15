@@ -1,6 +1,8 @@
 # Flobro Website
 
+[//]: # "Badges"
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=flobro_flobro-website&metric=alert_status)](https://sonarcloud.io/dashboard?id=flobro_flobro-website)
+[![BCH compliance](https://bettercodehub.com/edge/badge/flobro/flobro-website)](https://bettercodehub.com/results/flobro/flobro-website)
 
 The public website of Flobro, <https://flobro.app>, runs on Github Pages with [Jekyll](https://jekyllrb.com/).
 
