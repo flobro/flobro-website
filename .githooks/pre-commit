@@ -1,0 +1,12 @@
+#!/bin/sh
+# Lint staged work before it lands.
+
+# Biome (JS/JSON/CSS) via the pinned local install
+if [ -x node_modules/.bin/biome ]; then
+  node_modules/.bin/biome check --staged --no-errors-on-unmatched || {
+    echo "Biome found issues. Run: npm run lint:fix"; exit 1;
+  }
+else
+  echo "note: biome not installed (run npm install); skipping lint"
+fi
+exit 0

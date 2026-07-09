@@ -1,0 +1,411 @@
+/* Flobro website scripts. English lives inline in the HTML; other languages
+ * are fetched as JSON from /i18n only when needed. */
+'use strict';
+
+/* ------------------------------- i18n --------------------------------- */
+var LANG_KEY = 'flobro-lang';
+var lang =
+  localStorage.getItem(LANG_KEY) ||
+  ((navigator.language || 'en').toLowerCase().indexOf('nl') === 0 ? 'nl' : 'en');
+var dictCache = {};
+var isWin = /win/i.test(
+  (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '',
+);
+
+function fetchDict(code) {
+  if (dictCache[code]) return Promise.resolve(dictCache[code]);
+  return fetch('i18n/' + code + '.json')
+    .then(function (r) {
+      return r.json();
+    })
+    .then(function (d) {
+      dictCache[code] = d;
+      return d;
+    });
+}
+
+function applyDict(d) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function (el) {
+    if (d[el.dataset.i18n] !== undefined) el.textContent = d[el.dataset.i18n];
+  });
+  /* keys that may contain simple markup from our own files (never user input) */
+  document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+    if (d[el.dataset.i18nHtml] !== undefined) el.innerHTML = d[el.dataset.i18nHtml];
+  });
+  var toggle = document.getElementById('lang-toggle');
+  if (toggle) toggle.textContent = lang === 'en' ? 'NL' : 'EN';
+  var dlLabel = document.getElementById('dl-label');
+  if (dlLabel) dlLabel.textContent = isWin ? d.dl_win : d.dl_mac;
+  var dlSecondary = document.getElementById('dl-secondary');
+  if (dlSecondary) dlSecondary.textContent = isWin ? d.dl_also_mac : d.dl_also_win;
+}
+
+function setLang(code) {
+  lang = code;
+  localStorage.setItem(LANG_KEY, code);
+  fetchDict(code).then(applyDict);
+}
+
+(function initLang() {
+  var toggle = document.getElementById('lang-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      setLang(lang === 'en' ? 'nl' : 'en');
+    });
+  }
+  /* English is already in the markup; only fetch when something differs */
+  if (lang !== 'en') setLang(lang);
+  else fetchDict('en').then(applyDict); /* still applies OS-specific download labels */
+})();
+
+/* ------------------------- dynamic footer year ------------------------- */
+(function () {
+  var y = document.getElementById('year');
+  if (y) y.textContent = String(new Date().getFullYear());
+})();
+
+/* ----------------------------- sticky nav ------------------------------ */
+(function () {
+  var shell = document.getElementById('nav-shell');
+  if (!shell) return;
+  var onScroll = function () {
+    shell.classList.toggle('scrolled', window.scrollY > 24);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* -------------------- real download links (GitHub API) ----------------- */
+(function () {
+  var FALLBACK = 'https://github.com/flobro/flobro-app/releases/latest';
+  var CACHE_KEY = 'flobro-dl';
+  var CACHE_TTL = 60 * 60 * 1000; /* 1 hour */
+
+  function apply(urls) {
+    var mac = urls.mac || FALLBACK;
+    var win = urls.win || FALLBACK;
+    var primary = document.getElementById('dl-primary');
+    var secondary = document.getElementById('dl-secondary');
+    var navBtn = document.getElementById('nav-download');
+    if (primary) primary.href = isWin ? win : mac;
+    if (secondary) secondary.href = isWin ? mac : win;
+    if (navBtn) navBtn.href = isWin ? win : mac;
+  }
+
+  try {
+    var cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || 'null');
+    if (cached && Date.now() - cached.t < CACHE_TTL) {
+      apply(cached);
+      return;
+    }
+  } catch {
+    /* ignore */
+  }
+
+  fetch('https://api.github.com/repos/flobro/flobro-app/releases/latest', {
+    headers: { Accept: 'application/vnd.github+json' },
+  })
+    .then(function (r) {
+      return r.ok ? r.json() : null;
+    })
+    .then(function (rel) {
+      if (!rel || !rel.assets) return;
+      var urls = { t: Date.now() };
+      rel.assets.forEach(function (a) {
+        if (/\.dmg$/i.test(a.name)) urls.mac = a.browser_download_url;
+        if (/(setup.*\.exe|\.exe|\.msi)$/i.test(a.name))
+          urls.win = urls.win || a.browser_download_url;
+      });
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify(urls));
+      apply(urls);
+    })
+    .catch(function () {
+      /* fallback links already in the markup */
+    });
+})();
+
+/* ----------------------- hero window: player logic ---------------------- */
+(function () {
+  var win = document.getElementById('demo-window');
+  var play = document.getElementById('demo-play');
+  var progress = document.getElementById('demo-progress');
+  var stage = document.getElementById('demo-stage');
+  if (!win || !play || !stage) return;
+
+  var clickTimes = [];
+  var rickrolled = false; /* once per pageload is plenty */
+  var staticCanvas = document.getElementById('tv-static');
+  var staticCtx = staticCanvas ? staticCanvas.getContext('2d') : null;
+  var staticRunning = false;
+
+  /* --- confetti --- */
+  function confettiBurst() {
+    var rect = play.getBoundingClientRect();
+    var stageRect = stage.getBoundingClientRect();
+    for (var i = 0; i < 16; i++) {
+      var c = document.createElement('span');
+      c.className = 'confetti';
+      var angle = (Math.PI * 2 * i) / 16 + Math.random() * 0.4;
+      var dist = 90 + Math.random() * 130;
+      c.style.left = rect.left - stageRect.left + rect.width / 2 + 'px';
+      c.style.top = rect.top - stageRect.top + rect.height / 2 + 'px';
+      c.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
+      c.style.setProperty('--dy', Math.sin(angle) * dist - 40 + 'px');
+      c.style.setProperty('--rot', Math.random() * 540 - 270 + 'deg');
+      if (i % 3 === 1) c.style.background = '#3fa9f5';
+      if (i % 3 === 2) c.style.background = '#1668a8';
+      stage.appendChild(c);
+      setTimeout(
+        function (el) {
+          el.remove();
+        },
+        1100,
+        c,
+      );
+    }
+  }
+
+  /* --- analog static (small canvas, ~15 fps, only while visible) --- */
+  function drawStatic() {
+    if (!staticRunning || !staticCtx) return;
+    if (!document.hidden) {
+      var img = staticCtx.createImageData(160, 100);
+      var d = img.data;
+      for (var i = 0; i < d.length; i += 4) {
+        var v = (Math.random() * 255) | 0;
+        d[i] = d[i + 1] = d[i + 2] = v;
+        d[i + 3] = 255;
+      }
+      staticCtx.putImageData(img, 0, 0);
+    }
+    setTimeout(function () {
+      requestAnimationFrame(drawStatic);
+    }, 66);
+  }
+  function startStatic() {
+    if (staticRunning) return;
+    staticRunning = true;
+    drawStatic();
+  }
+  function stopStatic() {
+    staticRunning = false;
+  }
+
+  function resetPlayer() {
+    win.classList.remove('playing', 'ended');
+    stopStatic();
+    /* force the progress animation to restart cleanly next time */
+    if (progress) {
+      progress.style.animation = 'none';
+      void progress.offsetWidth;
+      progress.style.animation = '';
+    }
+  }
+
+  /* progress reached 100%: cue the broken TV */
+  if (progress) {
+    progress.addEventListener('animationend', function () {
+      win.classList.add('ended');
+      startStatic();
+    });
+  }
+
+  /* progress pauses when the page is hidden */
+  document.addEventListener('visibilitychange', function () {
+    document.body.classList.toggle('vis-paused', document.hidden);
+  });
+
+  play.addEventListener('click', function () {
+    var now = Date.now();
+    clickTimes = clickTimes.filter(function (t) {
+      return now - t < 900;
+    });
+    clickTimes.push(now);
+
+    if (win.classList.contains('ended')) {
+      /* pause button resets the broken TV */
+      resetPlayer();
+      return;
+    }
+
+    win.classList.toggle('playing');
+    win.classList.remove('wiggle');
+    void win.offsetWidth;
+    win.classList.add('wiggle');
+    confettiBurst();
+
+    /* triple-click within 900ms: the real thing, in a real floating window */
+    if (clickTimes.length >= 3 && !rickrolled) {
+      rickrolled = true;
+      clickTimes = [];
+      window.open(
+        'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
+        'flobroDemo',
+        'popup,width=560,height=340,left=' +
+          Math.max(0, (screen.width - 560) / 2) +
+          ',top=' +
+          Math.max(0, (screen.height - 340) / 3),
+      );
+    }
+  });
+
+  /* --- draggable by the top bar (mouse + touch via pointer events) ---
+   * Once dragged, the window becomes position:fixed: it floats above the
+   * whole page (below only the nav bar) and keeps its spot while scrolling.
+   * The close button in the hover toolbar puts it back where it started. */
+  var drag = null;
+
+  /* The reveal entrance animation leaves a transform on the hero elements
+   * (fill-mode: forwards), and a transformed ancestor would turn the
+   * window's position:fixed into position:absolute. Strip the classes once
+   * the entrance is done; the elements are at their final state anyway.
+   * No DOM re-parenting: moving nodes restarts CSS animations and would
+   * reset the progress bar. */
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    el.addEventListener('animationend', function (e) {
+      if (e.animationName === 'reveal') el.classList.remove('reveal', 'd1', 'd2');
+    });
+  });
+
+  function resetWindowPosition() {
+    win.classList.remove('dragged', 'dragging');
+    win.style.position = '';
+    win.style.left = '';
+    win.style.top = '';
+    win.style.right = '';
+    win.style.width = '';
+  }
+
+  function startDrag(e) {
+    if (e.button !== undefined && e.button !== 0) return;
+    if (e.target && e.target.classList && e.target.classList.contains('x')) return;
+    var winRect = win.getBoundingClientRect();
+    drag = { dx: e.clientX - winRect.left, dy: e.clientY - winRect.top };
+    /* freeze the current size so going fixed doesn't change it */
+    win.style.width = winRect.width + 'px';
+    win.classList.add('dragged', 'dragging');
+    /* fixed = viewport coordinates, so the rect maps 1:1 */
+    win.style.left = winRect.left + 'px';
+    win.style.top = winRect.top + 'px';
+    win.style.right = 'auto';
+    e.currentTarget.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  }
+  function moveDrag(e) {
+    if (!drag) return;
+    win.style.left = e.clientX - drag.dx + 'px';
+    win.style.top = Math.max(0, e.clientY - drag.dy) + 'px';
+  }
+  function endDrag(e) {
+    if (!drag) return;
+    drag = null;
+    win.classList.remove('dragging');
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {
+      /* ignore */
+    }
+  }
+
+  var toolbar = win.querySelector('.toolbar');
+  [document.getElementById('grab-strip'), toolbar].forEach(function (el) {
+    if (!el) return;
+    el.addEventListener('pointerdown', startDrag);
+    el.addEventListener('pointermove', moveDrag);
+    el.addEventListener('pointerup', endDrag);
+    el.addEventListener('pointercancel', endDrag);
+  });
+
+  /* the mock close button snaps the window back home */
+  var closeIcon = win.querySelector('.toolbar i.x');
+  if (closeIcon) {
+    closeIcon.addEventListener('pointerdown', function (e) {
+      e.stopPropagation();
+    });
+    closeIcon.addEventListener('click', resetWindowPosition);
+  }
+})();
+
+/* ----------------------- funnel tracking helpers ----------------------- */
+function phTrack(event, props) {
+  if (window.posthog && window.posthog.capture) window.posthog.capture(event, props || {});
+}
+(function () {
+  var platform = /win/i.test(
+    (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '',
+  )
+    ? 'windows'
+    : 'mac';
+  var bind = function (id, event, props) {
+    var el = document.getElementById(id);
+    if (el)
+      el.addEventListener('click', function () {
+        phTrack(event, props);
+      });
+  };
+  bind('dl-primary', 'download_click', { placement: 'hero', platform: platform });
+  bind('dl-secondary', 'download_click', {
+    placement: 'hero-secondary',
+    platform: platform === 'mac' ? 'windows' : 'mac',
+  });
+  bind('nav-download', 'download_click', { placement: 'nav', platform: platform });
+  bind('ext-store', 'extension_click', {});
+  bind('sp-gh', 'donate_click', { provider: 'github-sponsors' });
+  bind('sp-bmc', 'donate_click', { provider: 'buymeacoffee' });
+  bind('sp-mollie', 'donate_click', { provider: 'mollie' });
+})();
+
+/* ------------------------------ Konami code ---------------------------- */
+(function () {
+  var seq = [
+    'ArrowUp',
+    'ArrowUp',
+    'ArrowDown',
+    'ArrowDown',
+    'ArrowLeft',
+    'ArrowRight',
+    'ArrowLeft',
+    'ArrowRight',
+    'b',
+    'a',
+  ];
+  var pos = 0;
+  document.addEventListener('keydown', function (e) {
+    var key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    if (key === seq[pos]) {
+      pos++;
+      if (pos === seq.length) {
+        pos = 0;
+        var body = document.body;
+        if (body.classList.contains('konami')) {
+          body.classList.remove('konami');
+        } else {
+          body.style.setProperty('--konami-hue', Math.floor(Math.random() * 360) + 'deg');
+          body.classList.add('konami');
+        }
+      }
+    } else {
+      pos = key === seq[0] ? 1 : 0;
+    }
+  });
+})();
+
+/* ------------------------- analytics (PostHog) ------------------------- */
+/* Cookieless: persistence in memory only, so no banners are needed.
+ * Replace PH_KEY with the real project key; nothing loads until then. */
+(function () {
+  var PH_KEY = 'phc_tmfA5uemSD7TscmzLWQPAiqYXxfNartjfYsrjWQ6rEot';
+  if (PH_KEY.indexOf('REPLACE_ME') !== -1) return;
+  var s = document.createElement('script');
+  s.src = 'https://eu-assets.i.posthog.com/static/array.js';
+  s.onload = function () {
+    window.posthog.init(PH_KEY, {
+      api_host: 'https://eu.i.posthog.com',
+      persistence: 'memory',
+      autocapture: false,
+      capture_pageview: true,
+    });
+  };
+  document.head.appendChild(s);
+})();

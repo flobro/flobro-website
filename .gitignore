@@ -1,5 +1,18 @@
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
-Gemfile.lock
+# Dependencies and tooling
+node_modules/
+
+# OS and editor litter
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Environments and secrets
+.env
+.env.*
+
+# Git worktrees
+worktrees/
+.worktrees/

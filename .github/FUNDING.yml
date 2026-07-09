@@ -1,5 +1,5 @@
-# These are supported funding model platforms
-
-github: [cornips]
-patreon: cornips
-custom: ['buymeacoffee.com/cornips']
+# Sponsor button configuration
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button-in-your-repository
+github: cornips
+buy_me_a_coffee: cornips
+custom: ["https://payment-links.mollie.com/payment/uFb9QAUBabzWMqCQ4xuhq"]

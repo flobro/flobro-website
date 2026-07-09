@@ -1,47 +1,31 @@
-# Flobro Website
+<p align="center">
+  <img src=".github/promo.png" alt="Flobro, floating browser window" width="700">
+</p>
 
-[//]: # "Badges"
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=flobro_flobro-website&metric=alert_status)](https://sonarcloud.io/dashboard?id=flobro_flobro-website)
-[![BCH compliance](https://bettercodehub.com/edge/badge/flobro/flobro-website)](https://bettercodehub.com/results/flobro/flobro-website)
+# flobro.app
 
-The public website of Flobro, <https://flobro.app>, runs on Github Pages with [Jekyll](https://jekyllrb.com/).
+The public website of [Flobro](https://flobro.app), the floating browser window for Mac and Windows.
 
-You can use the [editor on GitHub](https://github.com/flobro/flobro.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Plain static HTML/CSS/JS, no build step. Hosted on GitHub Pages with the `CNAME` in this repo.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+```
+index.html        Landing page (English inline)
+privacy.html      Privacy, in plain words
+css/style.css     All styles
+js/main.js        i18n, download resolution, hero interactions
+i18n/*.json       Translations (English, Dutch)
+fonts/            Self-hosted Inter (subset, variable)
+assets/           Favicons and social images
+```
 
-## Getting started
+## Translations
 
-### Prerequisites
+English lives in the HTML itself; other languages are JSON files in `i18n/` fetched only when selected. To add a language: copy `i18n/en.json`, translate the values, and add the language code to the toggle logic in `js/main.js`.
 
-1. [Ruby](https://www.ruby-lang.org/en/downloads/) (version 2.5.0 or above)
-1. [RubyGems](https://rubygems.org/pages/download) (check: `gem -v`)
-1. [GCC](https://gcc.gnu.org/install/) and [Make](https://www.gnu.org/software/make/) (check: `gcc -v`, `g++ -v` and `make -v`)
-1. A clone of this repo.
+## Download links
 
-### Installation
+`js/main.js` asks the GitHub API for the latest release of `flobro/flobro-app` and points the buttons straight at the .dmg and Windows installer. Until a release exists, buttons fall back to the releases page.
 
-1. [Install Jekyll](https://jekyllrb.com/docs/installation/).
+## License
 
-### Running locally
-
-1. Open Terminal.
-1. Run the Jekyll site locally:
-
-    ```
-    bundle exec jekyll serve
-    ```
-1. To preview your site, in your web browser, navigate to http://localhost:4000.
-
-
-## Markdown
-
-See [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-## Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/flobro/flobro.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-## Support
-
-Having trouble with Pages? Check out the [documentation](https://docs.github.com/categories/github-pages-basics/).
+MIT
