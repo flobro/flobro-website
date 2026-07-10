@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code signing policy - Flobro</title>
+  <meta name="description" content="How Flobro builds and signs its releases: who may change the code, who reviews it, and who approves signing.">
+  <link rel="canonical" href="https://flobro.app/code-signing.html">
+  <meta name="theme-color" content="#248BD2">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="shortcut icon" href="assets/favicon.ico">
+  <link rel="preload" href="fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="nav-shell" id="nav-shell">
+    <nav>
+      <a class="brand" href="/">
+        <svg viewBox="0 0 512 512" aria-hidden="true">
+          <rect class="logo-back" x="88" y="188" width="272" height="212" rx="44" fill="none" stroke="#248BD2" stroke-opacity="0.35" stroke-width="28"/>
+          <rect class="logo-front" x="168" y="104" width="272" height="212" rx="44" fill="#248BD2"/>
+        </svg>
+        Flobro
+      </a>
+      <div class="links">
+        <a class="keep" href="/" data-i18n="pp_back">← Back to flobro.app</a>
+        <button type="button" class="lang-toggle keep" id="lang-toggle" aria-label="Switch language">NL</button>
+      </div>
+    </nav>
+  </div>
+
+  <main class="prose">
+    <h1>Code signing policy</h1>
+    <p class="lede" data-i18n="cs_lede">Every Flobro release is built automatically from the public source code. This page describes who can change that code and how releases get signed.</p>
+
+    <h2 data-i18n="cs_sign_t">Signing</h2>
+    <p data-i18n-html="cs_sign_p">Windows builds: free code signing provided by <a href="https://about.signpath.io" rel="noopener">SignPath.io</a>, certificate by <a href="https://signpath.org" rel="noopener">SignPath Foundation</a>. macOS builds are signed and notarized with an Apple Developer ID. Binaries are produced by GitHub Actions directly from the source repository; no release is built on a personal machine.</p>
+
+    <h2 data-i18n="cs_roles_t">Team roles</h2>
+    <div class="card">
+      <ul>
+        <li data-i18n-html="cs_roles_li1">Committers and reviewers: <a href="https://github.com/orgs/flobro/people" rel="noopener">members of the flobro organization</a></li>
+        <li data-i18n-html="cs_roles_li2">Approvers: <a href="https://github.com/orgs/flobro/people?query=role%3Aowner" rel="noopener">organization owners</a></li>
+      </ul>
+    </div>
+    <p data-i18n="cs_roles_p">Changes proposed by anyone outside the team are only merged after review by a team member. Every signing request is approved manually by an approver.</p>
+
+    <h2 data-i18n="cs_privacy_t">Privacy</h2>
+    <p data-i18n-html="cs_privacy_p">Flobro only transfers the anonymous usage statistics described in the <a href="privacy.html">privacy policy</a>, and only when that setting is on. It can be switched off in the app and in the extension.</p>
+  </main>
+
+  <footer>
+    <div class="cols">
+      <span>© 2016-<span id="year">2026</span> <a href="https://github.com/flobro" rel="noopener">Flobro</a> · <span data-i18n="license">MIT license</span></span>
+      <div class="foot-links">
+        <a href="https://github.com/flobro" rel="noopener" data-i18n="nav_source">Source</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

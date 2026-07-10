@@ -71,5 +71,15 @@
   "pp_why_p": "Flobro is a free, open source side project. Knowing that most people float video sites, or that many users run a Dutch system, decides what gets built next. That is the whole story: usage numbers in, better app out. Nothing is sold, shared or combined with other data.",
   "pp_contact_t": "Questions?",
   "pp_contact_p": "Open an issue on the source repository, that is the one place to reach us. The code is open, so you can also just read what it does.",
-  "pp_back": "← Back to flobro.app"
+  "pp_back": "← Back to flobro.app",
+  "cs_lede": "Every Flobro release is built automatically from the public source code. This page describes who can change that code and how releases get signed.",
+  "cs_sign_t": "Signing",
+  "cs_sign_p": "Windows builds: free code signing provided by <a href=\"https://about.signpath.io\" rel=\"noopener\">SignPath.io</a>, certificate by <a href=\"https://signpath.org\" rel=\"noopener\">SignPath Foundation</a>. macOS builds are signed and notarized with an Apple Developer ID. Binaries are produced by GitHub Actions directly from the source repository; no release is built on a personal machine.",
+  "cs_roles_t": "Team roles",
+  "cs_roles_li1": "Committers and reviewers: <a href=\"https://github.com/orgs/flobro/people\" rel=\"noopener\">members of the flobro organization</a>",
+  "cs_roles_li2": "Approvers: <a href=\"https://github.com/orgs/flobro/people?query=role%3Aowner\" rel=\"noopener\">organization owners</a>",
+  "cs_roles_p": "Changes proposed by anyone outside the team are only merged after review by a team member. Every signing request is approved manually by an approver.",
+  "cs_privacy_t": "Privacy",
+  "cs_privacy_p": "Flobro only transfers the anonymous usage statistics described in the <a href=\"privacy.html\">privacy policy</a>, and only when that setting is on. It can be switched off in the app and in the extension.",
+  "foot_signing": "Code signing policy"
 }

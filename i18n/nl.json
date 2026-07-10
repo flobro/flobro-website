@@ -71,5 +71,15 @@
   "pp_why_p": "Flobro is een gratis, open source zijproject. Weten dat de meeste mensen videosites floaten, of dat veel gebruikers een Nederlands systeem draaien, bepaalt wat er als volgende wordt gebouwd. Dat is het hele verhaal: gebruikscijfers erin, betere app eruit. Er wordt niets verkocht, gedeeld of gecombineerd met andere data.",
   "pp_contact_t": "Vragen?",
   "pp_contact_p": "Open een issue op de broncode-repository, dat is dé plek om ons te bereiken. De code is open, dus je kunt ook gewoon nalezen wat hij doet.",
-  "pp_back": "← Terug naar flobro.app"
+  "pp_back": "← Terug naar flobro.app",
+  "cs_lede": "Elke Flobro-release wordt automatisch gebouwd uit de openbare broncode. Deze pagina beschrijft wie die code mag wijzigen en hoe releases worden ondertekend.",
+  "cs_sign_t": "Ondertekening",
+  "cs_sign_p": "Windows-builds: gratis code signing door <a href=\"https://about.signpath.io\" rel=\"noopener\">SignPath.io</a>, certificaat van <a href=\"https://signpath.org\" rel=\"noopener\">SignPath Foundation</a>. macOS-builds worden ondertekend en genotariseerd met een Apple Developer ID. Binaries worden door GitHub Actions rechtstreeks uit de broncoderepository gebouwd; geen enkele release wordt op een persoonlijke computer gemaakt.",
+  "cs_roles_t": "Teamrollen",
+  "cs_roles_li1": "Committers en reviewers: <a href=\"https://github.com/orgs/flobro/people\" rel=\"noopener\">leden van de flobro-organisatie</a>",
+  "cs_roles_li2": "Goedkeurders: <a href=\"https://github.com/orgs/flobro/people?query=role%3Aowner\" rel=\"noopener\">eigenaren van de organisatie</a>",
+  "cs_roles_p": "Wijzigingen van buiten het team worden pas samengevoegd na review door een teamlid. Elk ondertekeningsverzoek wordt handmatig goedgekeurd door een goedkeurder.",
+  "cs_privacy_t": "Privacy",
+  "cs_privacy_p": "Flobro verstuurt alleen de anonieme gebruiksstatistieken uit het <a href=\"privacy.html\">privacybeleid</a>, en alleen als die instelling aanstaat. Uitzetten kan in de app en in de extensie.",
+  "foot_signing": "Code signing policy"
 }
