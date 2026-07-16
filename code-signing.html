@@ -37,7 +37,7 @@
     <p class="lede" data-i18n="cs_lede">Every Flobro release is built automatically from the public source code. This page describes who can change that code and how releases get signed.</p>
 
     <h2 data-i18n="cs_sign_t">Signing</h2>
-    <p data-i18n-html="cs_sign_p">Windows builds: free code signing provided by <a href="https://about.signpath.io" rel="noopener">SignPath.io</a>, certificate by <a href="https://signpath.org" rel="noopener">SignPath Foundation</a>. macOS builds are signed and notarized with an Apple Developer ID. Binaries are produced by GitHub Actions directly from the source repository; no release is built on a personal machine.</p>
+    <p data-i18n-html="cs_sign_p">macOS builds are signed and notarized with an Apple Developer ID, so they open without a Gatekeeper warning. Windows builds are not code signed yet, so Windows may show a SmartScreen warning on first run (choose More info, then Run anyway); free signing through <a href="https://about.signpath.io" rel="noopener">SignPath Foundation</a> is planned once the project qualifies. Binaries are produced by GitHub Actions directly from the source repository; no release is built on a personal machine.</p>
 
     <h2 data-i18n="cs_roles_t">Team roles</h2>
     <div class="card">
