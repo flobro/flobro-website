@@ -81,5 +81,6 @@
   "cs_roles_p": "Changes proposed by anyone outside the team are only merged after review by a team member. Every signing request is approved manually by an approver.",
   "cs_privacy_t": "Privacy",
   "cs_privacy_p": "Flobro only transfers the anonymous usage statistics described in the <a href=\"privacy.html\">privacy policy</a>, and only when that setting is on. It can be switched off in the app and in the extension.",
-  "foot_signing": "Code signing policy"
+  "foot_signing": "Code signing policy",
+  "foot_docs": "Documentation"
 }

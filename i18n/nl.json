@@ -81,5 +81,6 @@
   "cs_roles_p": "Wijzigingen van buiten het team worden pas samengevoegd na review door een teamlid. Elk ondertekeningsverzoek wordt handmatig goedgekeurd door een goedkeurder.",
   "cs_privacy_t": "Privacy",
   "cs_privacy_p": "Flobro verstuurt alleen de anonieme gebruiksstatistieken uit het <a href=\"privacy.html\">privacybeleid</a>, en alleen als die instelling aanstaat. Uitzetten kan in de app en in de extensie.",
-  "foot_signing": "Code signing policy"
+  "foot_signing": "Code signing policy",
+  "foot_docs": "Documentatie"
 }
