@@ -406,7 +406,9 @@ h1 .accent {
 }
 
 .reveal {
-  opacity: 0;
+  /* 0.01 instead of 0: Chrome only records LCP once opacity > 0, so a true
+   * fade-from-zero pushes LCP past the animation start. Visually identical. */
+  opacity: 0.01;
   transform: translateY(18px);
   animation: reveal 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
 }
@@ -840,7 +842,9 @@ h2 {
 .step .n {
   font-size: 13px;
   font-weight: 700;
-  color: var(--blue);
+  /* --blue-deep, not --blue: 5.9:1 on the white card vs 3.7:1, WCAG AA needs
+   * 4.5:1 at this size. Same brand palette as link text. */
+  color: var(--blue-deep);
   margin-bottom: 10px;
   display: block;
 }
