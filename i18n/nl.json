@@ -82,5 +82,22 @@
   "cs_privacy_t": "Privacy",
   "cs_privacy_p": "Flobro verstuurt alleen de anonieme gebruiksstatistieken uit het <a href=\"privacy.html\">privacybeleid</a>, en alleen als die instelling aanstaat. Uitzetten kan in de app en in de extensie.",
   "foot_signing": "Code signing policy",
-  "foot_docs": "Documentatie"
+  "foot_docs": "Documentatie",
+  "meta_title": "Flobro - Zwevend browservenster, altijd bovenaan",
+  "meta_desc": "Flobro is een klein zwevend browservenster voor Mac en Windows. Bekijk video’s, volg dashboards en houd pagina’s in de gaten boven alles, zonder interface tot je er overheen beweegt.",
+  "og_desc": "Een klein zwevend browservenster voor Mac en Windows. Geen interface tot je er overheen beweegt.",
+  "pp_meta_title": "Privacy - Flobro",
+  "pp_meta_desc": "Wat Flobro verzamelt, wat het nooit verzamelt en hoe je het uitzet. Privacy in gewone taal, zonder juridisch jargon.",
+  "cs_meta_title": "Code signing-beleid - Flobro",
+  "cs_meta_desc": "Hoe Flobro-releases worden gebouwd en ondertekend, en wie de code kan wijzigen.",
+  "faq_kicker": "FAQ",
+  "faq_title": "Veelgestelde vragen.",
+  "faq_q1": "Hoe houd ik een browservenster altijd bovenaan?",
+  "faq_a1": "Open Flobro, plak een URL en klik op Float. Het venster blijft boven elke applicatie op Mac en Windows tot je het losmaakt. Vanuit Chrome laat de Flobro-extensie het huidige tabblad zweven en stuurt het met een klik door naar de app.",
+  "faq_q2": "Wat is het verschil tussen de Chrome-extensie en de desktop-app?",
+  "faq_a2": "De extensie laat een tabblad zweven in een minimale popup zonder browserinterface, maar browsers kunnen een venster niet boven andere applicaties houden. De desktop-app kan dat wel, dus de extensie stuurt pagina’s ernaartoe voor echt altijd bovenaan.",
+  "faq_q3": "Is Flobro echt gratis?",
+  "faq_a3": "Ja. Flobro is gratis en open source onder de MIT-licentie, zonder accounts of advertenties. De ontwikkeling draait op vrijwillige donaties.",
+  "faq_q4": "Volgt Flobro wat ik kijk?",
+  "faq_a4": "Nee. Anonieme gebruiksstatistieken zijn beperkt tot alleen hostnames, nooit volledige URL’s, en zijn volledig uit te zetten. De details staan in het privacybeleid."
 }

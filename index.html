@@ -3,16 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Flobro - Show all content. Always on top.</title>
+  <title>Flobro - Floating browser window, always on top</title>
   <meta name="description" content="Flobro is a tiny floating browser window for Mac and Windows. Watch videos, follow dashboards and monitor pages on top of everything, with zero interface until you hover.">
   <meta name="author" content="Flobro">
   <link rel="canonical" href="https://flobro.app/">
+  <link rel="alternate" hreflang="en" href="https://flobro.app/">
+  <link rel="alternate" hreflang="nl" href="https://flobro.app/nl/">
+  <link rel="alternate" hreflang="es" href="https://flobro.app/es/">
+  <link rel="alternate" hreflang="de" href="https://flobro.app/de/">
+  <link rel="alternate" hreflang="fr" href="https://flobro.app/fr/">
+  <link rel="alternate" hreflang="pt-BR" href="https://flobro.app/pt-br/">
+  <link rel="alternate" hreflang="x-default" href="https://flobro.app/">
   <meta name="theme-color" content="#248BD2">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://flobro.app/">
   <meta property="og:site_name" content="Flobro">
-  <meta property="og:title" content="Flobro - Show all content. Always on top.">
+  <meta property="og:title" content="Flobro - Floating browser window, always on top">
   <meta property="og:description" content="A tiny floating browser window for Mac and Windows. Zero interface until you hover.">
   <meta property="og:image" content="https://flobro.app/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -25,6 +32,40 @@
   <link rel="preload" href="fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
+
+  <!-- ld:software:start -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Flobro",
+    "operatingSystem": "macOS, Windows",
+    "applicationCategory": "UtilitiesApplication",
+    "inLanguage": "en",
+    "description": "Flobro is a tiny floating browser window for Mac and Windows. Watch videos, follow dashboards and monitor pages on top of everything, with zero interface until you hover.",
+    "url": "https://flobro.app/",
+    "downloadUrl": "https://github.com/flobro/flobro-app/releases/latest",
+    "license": "https://opensource.org/license/mit",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "author": { "@type": "Person", "name": "Martijn Cornips" }
+  }
+  </script>
+  <!-- ld:software:end -->
+  <!-- ld:faq:start -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "en",
+    "mainEntity": [
+      { "@type": "Question", "name": "How do I keep a browser window always on top?", "acceptedAnswer": { "@type": "Answer", "text": "Open Flobro, paste a URL and hit Float. The window stays above every application on Mac and Windows until you unpin it. From Chrome, the Flobro extension floats the current tab and can forward it to the app with one click." } },
+      { "@type": "Question", "name": "What is the difference between the Chrome extension and the desktop app?", "acceptedAnswer": { "@type": "Answer", "text": "The extension floats a tab in a minimal popup without any browser interface, but browsers cannot keep a window above other applications. The desktop app can, so the extension forwards pages to it for true always on top." } },
+      { "@type": "Question", "name": "Is Flobro really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Flobro is free and open source under the MIT license, without accounts or ads. Development runs on voluntary donations." } },
+      { "@type": "Question", "name": "Does Flobro track what I watch?", "acceptedAnswer": { "@type": "Answer", "text": "No. Anonymous usage statistics are limited to hostnames only, never full URLs, and can be switched off entirely. The details are in the privacy policy." } }
+    ]
+  }
+  </script>
+  <!-- ld:faq:end -->
 </head>
 <body>
 
@@ -191,6 +232,29 @@
         <div class="row"><span data-i18n="m5">Copy link address</span></div>
         <div class="row"><span data-i18n="m6">Inspect</span></div>
       </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="kicker" data-i18n="faq_kicker">FAQ</div>
+    <h2 data-i18n="faq_title">Frequently asked questions.</h2>
+    <div class="faq">
+      <details>
+        <summary data-i18n="faq_q1">How do I keep a browser window always on top?</summary>
+        <p data-i18n="faq_a1">Open Flobro, paste a URL and hit Float. The window stays above every application on Mac and Windows until you unpin it. From Chrome, the Flobro extension floats the current tab and can forward it to the app with one click.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq_q2">What is the difference between the Chrome extension and the desktop app?</summary>
+        <p data-i18n="faq_a2">The extension floats a tab in a minimal popup without any browser interface, but browsers cannot keep a window above other applications. The desktop app can, so the extension forwards pages to it for true always on top.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq_q3">Is Flobro really free?</summary>
+        <p data-i18n="faq_a3">Yes. Flobro is free and open source under the MIT license, without accounts or ads. Development runs on voluntary donations.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq_q4">Does Flobro track what I watch?</summary>
+        <p data-i18n="faq_a4">No. Anonymous usage statistics are limited to hostnames only, never full URLs, and can be switched off entirely. The details are in the privacy policy.</p>
+      </details>
     </div>
   </section>
 
