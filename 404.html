@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found - Flobro</title>
+  <meta name="description" content="This page floated away. Head back to flobro.app.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#248BD2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="shortcut icon" href="/assets/favicon.ico">
+  <link rel="preload" href="/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .nf-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      gap: 18px;
+    }
+    .nf-logo {
+      width: 96px;
+      height: 96px;
+    }
+    .nf-logo .logo-front {
+      animation: nf-drift 3.2s ease-in-out infinite alternate;
+    }
+    @keyframes nf-drift {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-14px, 18px); }
+    }
+    .nf-code {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--blue-deep);
+      text-transform: uppercase;
+    }
+    .nf-title {
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .nf-sub {
+      color: var(--ink-soft);
+      max-width: 420px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="nf-wrap">
+  <svg class="nf-logo" viewBox="0 0 512 512" aria-hidden="true">
+    <rect class="logo-back" x="88" y="188" width="272" height="212" rx="44" fill="none" stroke="#248BD2" stroke-opacity="0.35" stroke-width="28"/>
+    <rect class="logo-front" x="168" y="104" width="272" height="212" rx="44" fill="#248BD2"/>
+  </svg>
+  <p class="nf-code">404</p>
+  <h1 class="nf-title">This window floated away.</h1>
+  <p class="nf-sub">The page you are looking for does not exist or has moved. The homepage is still pinned right where you left it.</p>
+  <a class="btn primary" href="/">Back to flobro.app</a>
+</div>
+
+</body>
+</html>
