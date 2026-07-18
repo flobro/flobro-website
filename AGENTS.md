@@ -7,7 +7,7 @@ and CONTRIBUTING.md; this file is for you.
 
 The flobro.app website: static HTML/CSS/JS, no build step, hosted on GitHub Pages.
 
-index.html and privacy.html contain English inline; i18n/*.json hold translations fetched on demand; css/style.css and js/main.js are the only assets besides fonts/ and assets/.
+index.html, privacy.html and code-signing.html contain English inline; i18n/*.json hold the translations; nl/, es/, de/, fr/ and pt-br/ are pre-rendered pages generated with `npm run i18n` (scripts/generate-locale-pages.mjs) and must be regenerated after every content or translation change; css/style.css and js/main.js are the only assets besides fonts/ and assets/.
 
 ## Setup
 
@@ -18,7 +18,7 @@ Run `npm install` once to activate git hooks and dev tooling. No build step exis
 - Run locally: `python3 -m http.server 8000 (or any static server) from the repo root; open http://localhost:8000`
 - Build: `none, deploys as-is via GitHub Pages`
 - Lint: `npm run lint` (Biome). Auto-fix: `npm run lint:fix`
-- Tests: npm run lint, then manual: language toggle, hero window drag/easter eggs, privacy page
+- Tests: npm run lint, then manual: language select on / and /nl/, hero window drag/easter eggs, privacy page
 
 ## Code style
 
