@@ -11,17 +11,40 @@ var isWin = /win/i.test(
   (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '',
 );
 
+function detectLang() {
+  var tag = (navigator.language || 'en').toLowerCase();
+  if (tag.indexOf('pt') === 0) return 'pt-br';
+  var short = tag.slice(0, 2);
+  return LANGS.indexOf(short) > 0 ? short : 'en';
+}
+
 (function initLang() {
   var parts = location.pathname.split('/').filter(Boolean);
   var current = LANGS.indexOf(parts[0]) > 0 ? parts[0] : 'en';
+  var page = parts[parts.length - 1];
+  if (!page || LANGS.indexOf(page) !== -1) page = '';
+
+  /* First visit: remember the browser language (or the page the visitor
+   * landed on). An explicit pick in the select always wins afterwards. */
+  var stored = localStorage.getItem(LANG_KEY);
+  if (!stored) {
+    stored = current !== 'en' ? current : detectLang();
+    localStorage.setItem(LANG_KEY, stored);
+  }
+  /* Send visitors on an English page to their own language, like the old
+   * runtime switcher did. Search engines keep seeing plain English plus
+   * hreflang, and choosing EN in the select stops the redirect for good. */
+  if (current === 'en' && stored !== 'en' && LANGS.indexOf(stored) > 0) {
+    location.replace('/' + stored + '/' + page);
+    return;
+  }
+
   var select = document.getElementById('lang-select');
   if (select) {
     select.value = current;
     select.addEventListener('change', function () {
       var code = select.value;
       localStorage.setItem(LANG_KEY, code);
-      var page = parts[parts.length - 1];
-      if (!page || LANGS.indexOf(page) !== -1) page = '';
       location.href = (code === 'en' ? '/' : '/' + code + '/') + page;
     });
   }
