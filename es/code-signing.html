@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Política de firma de código - Flobro</title>
+  <meta name="description" content="Cómo se construyen y firman las versiones de Flobro: quién puede cambiar el código, quién lo revisa y quién aprueba la firma.">
+  <link rel="canonical" href="https://flobro.app/es/code-signing.html">
+  <link rel="alternate" hreflang="en" href="https://flobro.app/code-signing.html">
+  <link rel="alternate" hreflang="nl" href="https://flobro.app/nl/code-signing.html">
+  <link rel="alternate" hreflang="es" href="https://flobro.app/es/code-signing.html">
+  <link rel="alternate" hreflang="de" href="https://flobro.app/de/code-signing.html">
+  <link rel="alternate" hreflang="fr" href="https://flobro.app/fr/code-signing.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://flobro.app/pt-br/code-signing.html">
+  <link rel="alternate" hreflang="x-default" href="https://flobro.app/code-signing.html">
+  <meta name="theme-color" content="#248BD2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="shortcut icon" href="/assets/favicon.ico">
+  <link rel="preload" href="/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="nav-shell" id="nav-shell">
+    <nav>
+      <a class="brand" href="/es/">
+        <svg viewBox="0 0 512 512" aria-hidden="true">
+          <rect class="logo-back" x="88" y="188" width="272" height="212" rx="44" fill="none" stroke="#248BD2" stroke-opacity="0.35" stroke-width="28"/>
+          <rect class="logo-front" x="168" y="104" width="272" height="212" rx="44" fill="#248BD2"/>
+        </svg>
+        Flobro
+      </a>
+      <div class="links">
+        <a class="keep" href="/es/" data-i18n="pp_back">← Volver a flobro.app</a>
+        <select class="lang-toggle keep" id="lang-select" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="nl">NL</option>
+          <option value="es" selected>ES</option>
+          <option value="de">DE</option>
+          <option value="fr">FR</option>
+          <option value="pt-br">PT</option>
+        </select>
+      </div>
+    </nav>
+  </div>
+
+  <main class="prose">
+    <h1>Code signing policy</h1>
+    <p class="lede" data-i18n="cs_lede">Cada versión de Flobro se construye automáticamente a partir del código fuente público. Esta página describe quién puede cambiar ese código y cómo se firman las versiones.</p>
+
+    <h2 data-i18n="cs_sign_t">Firma</h2>
+    <p data-i18n-html="cs_sign_p">Las versiones para macOS están firmadas y notarizadas con un Apple Developer ID, así que se abren sin aviso de Gatekeeper. Las versiones para Windows aún no están firmadas, por lo que Windows puede mostrar un aviso de SmartScreen la primera vez (elige Más información y luego Ejecutar de todas formas); la firma gratuita a través de <a href="https://about.signpath.io" rel="noopener">SignPath Foundation</a> está prevista en cuanto el proyecto cumpla los requisitos. Los binarios se generan con GitHub Actions directamente desde el repositorio; ninguna versión se construye en un equipo personal.</p>
+
+    <h2 data-i18n="cs_roles_t">Roles del equipo</h2>
+    <div class="card">
+      <ul>
+        <li data-i18n-html="cs_roles_li1">Committers y revisores: <a href="https://github.com/orgs/flobro/people" rel="noopener">miembros de la organización flobro</a></li>
+        <li data-i18n-html="cs_roles_li2">Aprobadores: <a href="https://github.com/orgs/flobro/people?query=role%3Aowner" rel="noopener">propietarios de la organización</a></li>
+      </ul>
+    </div>
+    <p data-i18n="cs_roles_p">Los cambios propuestos por personas ajenas al equipo solo se fusionan tras la revisión de un miembro del equipo. Cada solicitud de firma la aprueba manualmente un aprobador.</p>
+
+    <h2 data-i18n="cs_privacy_t">Privacidad</h2>
+    <p data-i18n-html="cs_privacy_p">Flobro solo transmite las estadísticas anónimas de uso descritas en la <a href="/es/privacy.html">política de privacidad</a>, y solo cuando ese ajuste está activado. Se puede desactivar en la app y en la extensión.</p>
+  </main>
+
+  <footer>
+    <div class="cols">
+      <span>© 2016-<span id="year">2026</span> <a href="https://github.com/flobro" rel="noopener">Flobro</a> · <span data-i18n="license">Licencia MIT</span></span>
+      <div class="foot-links">
+        <a href="https://github.com/flobro/flobro-app/wiki" rel="noopener" data-i18n="foot_docs">Documentación</a>
+        <a href="https://github.com/flobro" rel="noopener" data-i18n="nav_source">Código</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

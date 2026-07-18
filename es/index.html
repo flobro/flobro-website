@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flobro - Ventana flotante de navegador, siempre encima</title>
+  <meta name="description" content="Flobro es una pequeña ventana flotante de navegador para Mac y Windows. Mira vídeos, sigue paneles y vigila páginas por encima de todo, sin interfaz hasta que pasas el cursor.">
+  <meta name="author" content="Flobro">
+  <link rel="canonical" href="https://flobro.app/es/">
+  <link rel="alternate" hreflang="en" href="https://flobro.app/">
+  <link rel="alternate" hreflang="nl" href="https://flobro.app/nl/">
+  <link rel="alternate" hreflang="es" href="https://flobro.app/es/">
+  <link rel="alternate" hreflang="de" href="https://flobro.app/de/">
+  <link rel="alternate" hreflang="fr" href="https://flobro.app/fr/">
+  <link rel="alternate" hreflang="pt-BR" href="https://flobro.app/pt-br/">
+  <link rel="alternate" hreflang="x-default" href="https://flobro.app/">
+  <meta name="theme-color" content="#248BD2">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://flobro.app/es/">
+  <meta property="og:site_name" content="Flobro">
+  <meta property="og:title" content="Flobro - Ventana flotante de navegador, siempre encima">
+  <meta property="og:description" content="Una pequeña ventana flotante de navegador para Mac y Windows. Sin interfaz hasta que pasas el cursor.">
+  <meta property="og:image" content="https://flobro.app/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="shortcut icon" href="/assets/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="preload" href="/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/main.js" defer></script>
+
+  <!-- ld:software:start -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Flobro",
+    "operatingSystem": "macOS, Windows",
+    "applicationCategory": "UtilitiesApplication",
+    "inLanguage": "es",
+    "description": "Flobro es una pequeña ventana flotante de navegador para Mac y Windows. Mira vídeos, sigue paneles y vigila páginas por encima de todo, sin interfaz hasta que pasas el cursor.",
+    "url": "https://flobro.app/es/",
+    "downloadUrl": "https://github.com/flobro/flobro-app/releases/latest",
+    "license": "https://opensource.org/license/mit",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Martijn Cornips"
+    }
+  }
+  </script>
+  <!-- ld:software:end -->
+  <!-- ld:faq:start -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "es",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cómo mantengo una ventana de navegador siempre encima?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Abre Flobro, pega una URL y pulsa Float. La ventana se mantiene por encima de todas las aplicaciones en Mac y Windows hasta que la sueltes. Desde Chrome, la extensión de Flobro hace flotar la pestaña actual y puede enviarla a la app con un clic."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuál es la diferencia entre la extensión de Chrome y la app de escritorio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La extensión hace flotar una pestaña en una ventana mínima sin interfaz de navegador, pero los navegadores no pueden mantener una ventana por encima de otras aplicaciones. La app de escritorio sí puede, así que la extensión le envía las páginas para estar realmente siempre encima."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Flobro es realmente gratis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Flobro es gratuito y de código abierto bajo licencia MIT, sin cuentas ni publicidad. El desarrollo se financia con donaciones voluntarias."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Flobro registra lo que veo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Las estadísticas anónimas de uso se limitan a nombres de host, nunca URL completas, y se pueden desactivar por completo. Los detalles están en la política de privacidad."
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- ld:faq:end -->
+</head>
+<body>
+
+<div class="wrap">
+  <div class="nav-shell" id="nav-shell">
+    <nav>
+      <a class="brand" href="/es/">
+        <svg viewBox="0 0 512 512" aria-hidden="true">
+          <rect class="logo-back" x="88" y="188" width="272" height="212" rx="44" fill="none" stroke="#248BD2" stroke-opacity="0.35" stroke-width="28"/>
+          <rect class="logo-front" x="168" y="104" width="272" height="212" rx="44" fill="#248BD2"/>
+        </svg>
+        Flobro
+      </a>
+      <div class="links">
+        <a href="#features" data-i18n="nav_features">Funciones</a>
+        <a href="#how" data-i18n="nav_how">Cómo funciona</a>
+        <a href="#extension" data-i18n="nav_ext">Extensión</a>
+        <a class="nav-cta keep" id="nav-download" href="https://github.com/flobro/flobro-app/releases/latest" data-i18n="nav_download">Descargar</a>
+        <select class="lang-toggle keep" id="lang-select" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="nl">NL</option>
+          <option value="es" selected>ES</option>
+          <option value="de">DE</option>
+          <option value="fr">FR</option>
+          <option value="pt-br">PT</option>
+        </select>
+      </div>
+    </nav>
+  </div>
+
+  <header>
+    <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="bubbles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+    <div class="hero-grid">
+      <div>
+        <h1 class="reveal"><span data-i18n="hero_1">Muestra todo el contenido.</span><br><span class="accent" data-i18n="hero_2">Siempre encima.</span></h1>
+        <p class="sub reveal d1" data-i18n="hero_sub">Flobro coloca una pequeña ventana de navegador sin marco por encima de todo en tu pantalla. Mira un vídeo, sigue un partido o vigila un panel mientras trabajas, juegas o estudias.</p>
+        <div class="cta-row reveal d2" id="download">
+          <a class="btn primary" id="dl-primary" data-mac="Descargar para Mac" data-win="Descargar para Windows" href="https://github.com/flobro/flobro-app/releases/latest">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span id="dl-label" data-i18n="dl_mac">Descargar para Mac</span>
+          </a>
+          <a class="btn ghost" id="dl-secondary" data-mac="También en Mac" data-win="También en Windows" href="https://github.com/flobro/flobro-app/releases/latest" data-i18n="dl_also_win">También en Windows</a>
+          <span class="cta-note" data-i18n="dl_note">Gratis y de código abierto. Licencia MIT. Descarga de ~5 MB.</span>
+        </div>
+      </div>
+
+      <div class="demo-stage reveal d2" id="demo-stage">
+        <div class="demo-back" aria-hidden="true">
+          <div class="l t"></div><div class="l"></div><div class="l"></div><div class="l"></div>
+          <div class="block"></div>
+        </div>
+        <div class="float-window" id="demo-window">
+          <div class="tv" aria-hidden="true">
+            <svg class="bars" viewBox="0 0 160 100" preserveAspectRatio="none">
+              <rect x="0" y="0" width="23" height="72" fill="#c0c0c0"/>
+              <rect x="23" y="0" width="23" height="72" fill="#c0c000"/>
+              <rect x="46" y="0" width="23" height="72" fill="#00c0c0"/>
+              <rect x="69" y="0" width="23" height="72" fill="#00c000"/>
+              <rect x="92" y="0" width="23" height="72" fill="#c000c0"/>
+              <rect x="115" y="0" width="23" height="72" fill="#c00000"/>
+              <rect x="138" y="0" width="22" height="72" fill="#0000c0"/>
+              <rect x="0" y="72" width="27" height="28" fill="#00214c"/>
+              <rect x="27" y="72" width="27" height="28" fill="#ffffff"/>
+              <rect x="54" y="72" width="27" height="28" fill="#32006a"/>
+              <rect x="81" y="72" width="43" height="28" fill="#131313"/>
+              <rect x="124" y="72" width="12" height="28" fill="#090909"/>
+              <rect x="136" y="72" width="24" height="28" fill="#1d1d1d"/>
+            </svg>
+            <canvas id="tv-static" width="160" height="100"></canvas>
+            <div class="scan"></div>
+          </div>
+          <div class="grab-strip" id="grab-strip" aria-hidden="true"></div>
+          <div class="toolbar" aria-hidden="true">
+            <span class="fav"></span><span class="ttl"></span><span class="sp"></span>
+            <i style="--m: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><path d=%22M3 8h10M8 3v10%22 stroke=%22black%22 stroke-width=%222%22 stroke-linecap=%22round%22/></svg>')"></i>
+            <i style="--m: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><rect x=%222%22 y=%224%22 width=%2212%22 height=%228%22 rx=%222%22 stroke=%22black%22 stroke-width=%222%22 fill=%22none%22/></svg>')"></i>
+            <i class="pin" style="--m: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><circle cx=%228%22 cy=%228%22 r=%225%22 stroke=%22black%22 stroke-width=%222.4%22 fill=%22none%22/><circle cx=%228%22 cy=%228%22 r=%222%22/></svg>')"></i>
+            <i style="--m: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><path d=%22M3 12h10%22 stroke=%22black%22 stroke-width=%222.4%22 stroke-linecap=%22round%22/></svg>')"></i>
+            <i class="x" style="--m: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><path d=%22M4 4l8 8M12 4l-8 8%22 stroke=%22black%22 stroke-width=%222.4%22 stroke-linecap=%22round%22/></svg>')"></i>
+          </div>
+          <button type="button" class="play" id="demo-play" aria-label="Play"></button>
+          <div class="bar"><b id="demo-progress"></b></div>
+        </div>
+        <div class="demo-hint" data-i18n="demo_hint">↑ pasa el cursor por la ventana, esa es toda la interfaz</div>
+      </div>
+    </div>
+  </header>
+
+  <section id="features">
+    <div class="kicker" data-i18n="feat_kicker">Funciones</div>
+    <h2 data-i18n="feat_title">Sin interfaz. Hasta que la quieras.</h2>
+    <p class="section-sub" data-i18n="feat_sub">Las ventanas de Flobro son puro contenido: sin pestañas, sin barra de direcciones, sin adornos. Mueve el ratón al borde superior y aparece una barra fina. Apártalo y desaparece.</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="13" height="11" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-2"/></svg></div>
+        <h3 data-i18n="f1_t">Siempre encima</h3>
+        <p data-i18n="f1_p">Tu ventana flotante se mantiene por encima de todas las apps. Actívalo o desactívalo por ventana con el pin cuando necesites el orden normal.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3 data-i18n="f2_t">Sin distracciones</h3>
+        <p data-i18n="f2_p">Sin marco y en silencio. La barra al pasar el cursor te da zoom, pin, minimizar, ajustes y cerrar, y luego se aparta.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        <h3 data-i18n="f3_t">Realmente ligera</h3>
+        <p data-i18n="f3_p">Construida con Tauri y Rust sobre el webview del sistema. Una descarga de ~5 MB que cuida tu memoria y tu batería.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M9 12h6"/></svg></div>
+        <h3 data-i18n="f4_t">Ajuste 16:9</h3>
+        <p data-i18n="f4_p">Un clic ajusta la ventana a proporciones perfectas de vídeo. Redimensiona libremente desde cualquier borde en cualquier momento.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M8 11h6M11 8v6"/></svg></div>
+        <h3 data-i18n="f5_t">Zoom por ventana</h3>
+        <p data-i18n="f5_p">Escala las páginas del 25% al 500% para que una ventana flotante pequeña muestre exactamente lo que te importa.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        <h3 data-i18n="f6_t">Código abierto</h3>
+        <p data-i18n="f6_p">Licencia MIT. Lee el código, abre incidencias, envía pull requests.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="kicker" data-i18n="how_kicker">Cómo funciona</div>
+    <h2 data-i18n="how_title">Tres pasos para flotar.</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="n">01</span>
+        <h3 data-i18n="s1_t">Pega un enlace</h3>
+        <p data-i18n="s1_p">Abre Flobro y pega cualquier URL: un vídeo, un directo, un panel, una página de documentación, lo que sea de la web.</p>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <h3 data-i18n="s2_t">Pulsa Float</h3>
+        <p data-i18n="s2_p">La página se abre en una ventana limpia sin marco que se mantiene encima de tus otras apps.</p>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <h3 data-i18n="s3_t">Vuelve al trabajo</h3>
+        <p data-i18n="s3_p">Muévela, redimensiónala, olvídala. Pasa el cursor por el borde superior cuando necesites los controles.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="extension">
+    <div class="ext">
+      <div>
+        <div class="kicker" data-i18n="ext_kicker">Extensión de Chrome</div>
+        <h2 data-i18n="ext_title">Flota directamente desde Chrome.</h2>
+        <p class="section-sub" data-i18n="ext_sub">La extensión de Flobro convierte cualquier pestaña, enlace o vídeo en una ventana mínima, desde la barra de herramientas o el menú contextual. Y con la app de escritorio instalada, un clic envía la página a una ventana realmente siempre encima.</p>
+        <div class="cta-row" style="margin-top: 24px;">
+          <!-- TODO: replace with the real Chrome Web Store listing URL once published -->
+          <a class="btn primary" id="ext-store" href="https://chromewebstore.google.com/detail/lbjfjhfnjdcglaecgbhkbbfhebccomlh" data-i18n="ext_cta">Añadir a Chrome</a>
+          <a class="btn ghost" href="https://github.com/flobro" rel="noopener" data-i18n="ext_src">Ver código</a>
+        </div>
+      </div>
+      <div class="mock" aria-hidden="true">
+        <div class="row"><span data-i18n="m1">Abrir enlace en una pestaña nueva</span></div>
+        <div class="row"><span data-i18n="m2">Abrir enlace en una ventana nueva</span></div>
+        <hr>
+        <div class="row hl"><span class="swatch"></span><span data-i18n="m3">Flotar este enlace</span></div>
+        <div class="row"><span class="swatch" style="opacity:.35"></span><span data-i18n="m4">Abrir enlace en la app de Flobro</span></div>
+        <hr>
+        <div class="row"><span data-i18n="m5">Copiar dirección del enlace</span></div>
+        <div class="row"><span data-i18n="m6">Inspeccionar</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="kicker" data-i18n="faq_kicker">FAQ</div>
+    <h2 data-i18n="faq_title">Preguntas frecuentes.</h2>
+    <div class="faq">
+      <details>
+        <summary data-i18n="faq_q1">¿Cómo mantengo una ventana de navegador siempre encima?</summary>
+        <p data-i18n="faq_a1">Abre Flobro, pega una URL y pulsa Float. La ventana se mantiene por encima de todas las aplicaciones en Mac y Windows hasta que la sueltes. Desde Chrome, la extensión de Flobro hace flotar la pestaña actual y puede enviarla a la app con un clic.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq_q2">¿Cuál es la diferencia entre la extensión de Chrome y la app de escritorio?</summary>
+        <p data-i18n="faq_a2">La extensión hace flotar una pestaña en una ventana mínima sin interfaz de navegador, pero los navegadores no pueden mantener una ventana por encima de otras aplicaciones. La app de escritorio sí puede, así que la extensión le envía las páginas para estar realmente siempre encima.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq_q3">¿Flobro es realmente gratis?</summary>
+        <p data-i18n="faq_a3">Sí. Flobro es gratuito y de código abierto bajo licencia MIT, sin cuentas ni publicidad. El desarrollo se financia con donaciones voluntarias.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq_q4">¿Flobro registra lo que veo?</summary>
+        <p data-i18n="faq_a4">No. Las estadísticas anónimas de uso se limitan a nombres de host, nunca URL completas, y se pueden desactivar por completo. Los detalles están en la política de privacidad.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="os-band">
+    <div class="kicker" data-i18n="os_kicker">Gratis para siempre</div>
+    <h2 data-i18n="os_title">Código abierto, mantenido por ti.</h2>
+    <p class="section-sub" style="margin-left:auto; margin-right:auto;" data-i18n-html="os_sub">Flobro es gratuito y de código abierto desde 2016. Si se gana un lugar <i>flotante</i> en tu pantalla, considera apoyar el desarrollo.</p>
+    <div class="cta-row">
+      <a class="btn ghost" id="sp-gh" href="https://github.com/sponsors/cornips" rel="noopener">
+        <svg class="sicon" viewBox="0 0 16 16" fill="#db61a2" aria-hidden="true"><path d="M8 14.25l-.345-.666C4.451 11.033 1.75 8.632 1.75 5.94 1.75 3.9 3.3 2.5 5.05 2.5c1.2 0 2.29.62 2.95 1.6.66-.98 1.75-1.6 2.95-1.6 1.75 0 3.3 1.4 3.3 3.44 0 2.692-2.7 5.093-5.905 7.644L8 14.25z"/></svg>
+        GitHub Sponsors
+      </a>
+      <a class="btn ghost" id="sp-bmc" href="https://www.buymeacoffee.com/cornips" rel="noopener">
+        <svg class="sicon" viewBox="0 0 24 24" fill="none" stroke="#f5a623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h2a2 2 0 0 1 2 2 4 4 0 0 1-4 4h-.5"/><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z" fill="#f5a623" fill-opacity=".15"/><path d="M8 2v2M12 2v2"/></svg>
+        Buy me a coffee
+      </a>
+      <a class="btn ghost" id="sp-mollie" href="https://payment-links.mollie.com/payment/cnRzN8hBxK5zk5CwmD6rk" rel="noopener">
+        <svg class="sicon" viewBox="0 0 24 24" fill="none" stroke="#248bd2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#248bd2" fill-opacity=".12"/><path d="M15.5 8.5A4.5 4.5 0 1 0 15.5 15.5M7.5 10.8h6M7.5 13.2h5"/></svg>
+        <span data-i18n="mollie">Donar una vez</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="cols">
+      <span>© 2016-<span id="year">2026</span> <a href="https://github.com/flobro" rel="noopener">Flobro</a> · <span data-i18n="license">Licencia MIT</span></span>
+      <div class="foot-links">
+        <a href="/es/privacy.html" data-i18n="foot_privacy">Privacidad</a>
+        <a href="/es/code-signing.html" data-i18n="foot_signing">Política de firma de código</a>
+        <a href="https://github.com/flobro/flobro-app/wiki" rel="noopener" data-i18n="foot_docs">Documentación</a>
+        <a href="https://github.com/flobro" rel="noopener" data-i18n="nav_source">Código</a>
+        <a href="https://github.com/flobro/flobro-app/issues" rel="noopener" data-i18n="foot_bug">Informar de un error</a>
+        <a href="https://github.com/flobro/flobro-chrome-app" rel="noopener" data-i18n="foot_legacy">Chrome App original</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

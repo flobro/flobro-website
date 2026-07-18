@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy - Flobro</title>
+  <meta name="description" content="Wat Flobro verzamelt, wat het nooit verzamelt en hoe je het uitzet. Privacy in gewone taal, zonder juridisch jargon.">
+  <link rel="canonical" href="https://flobro.app/nl/privacy.html">
+  <link rel="alternate" hreflang="en" href="https://flobro.app/privacy.html">
+  <link rel="alternate" hreflang="nl" href="https://flobro.app/nl/privacy.html">
+  <link rel="alternate" hreflang="es" href="https://flobro.app/es/privacy.html">
+  <link rel="alternate" hreflang="de" href="https://flobro.app/de/privacy.html">
+  <link rel="alternate" hreflang="fr" href="https://flobro.app/fr/privacy.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://flobro.app/pt-br/privacy.html">
+  <link rel="alternate" hreflang="x-default" href="https://flobro.app/privacy.html">
+  <meta name="theme-color" content="#248BD2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="shortcut icon" href="/assets/favicon.ico">
+  <link rel="preload" href="/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="nav-shell" id="nav-shell">
+    <nav>
+      <a class="brand" href="/nl/">
+        <svg viewBox="0 0 512 512" aria-hidden="true">
+          <rect class="logo-back" x="88" y="188" width="272" height="212" rx="44" fill="none" stroke="#248BD2" stroke-opacity="0.35" stroke-width="28"/>
+          <rect class="logo-front" x="168" y="104" width="272" height="212" rx="44" fill="#248BD2"/>
+        </svg>
+        Flobro
+      </a>
+      <div class="links">
+        <a class="keep" href="/nl/" data-i18n="pp_back">← Terug naar flobro.app</a>
+        <select class="lang-toggle keep" id="lang-select" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="nl" selected>NL</option>
+          <option value="es">ES</option>
+          <option value="de">DE</option>
+          <option value="fr">FR</option>
+          <option value="pt-br">PT</option>
+        </select>
+      </div>
+    </nav>
+  </div>
+
+  <main class="prose">
+    <h1 data-i18n="pp_title">Privacy, in gewone taal</h1>
+    <p class="lede" data-i18n="pp_lede">Flobro wordt gebouwd in de Europese Unie, heeft geen commerciële partij erachter en verdient niets aan je gegevens. Dit is precies wat er gebeurt en waarom.</p>
+
+    <h2 data-i18n="pp_cookies_t">Deze website</h2>
+    <p data-i18n="pp_cookies_p">Deze website plaatst geen cookies, dus er is ook geen banner om weg te klikken. Wel tellen we bezoeken met PostHog, een privacyvriendelijke analytics-tool op EU-servers: hoeveel mensen langskomen, uit welk land (zonder je IP-adres op te slaan), en welke knoppen worden aangeklikt, zoals de download- en doneerknoppen. Je taalkeuze wordt in je eigen browser bewaard (localStorage) en verlaat die nooit.</p>
+
+    <h2 data-i18n="pp_app_t">Wat de app deelt</h2>
+    <p data-i18n="pp_app_p1">Om te leren wat er beter kan, telt Flobro een paar anonieme gebeurtenissen met PostHog, een privacyvriendelijke analytics-tool, op servers in de EU. Wat er geteld wordt:</p>
+    <div class="card">
+      <ul>
+        <li data-i18n="pp_app_li1">dat de app is geopend</li>
+        <li data-i18n="pp_app_li2">dat er een pagina is gefloat, samen met alleen de hostnaam, zoals youtube.com</li>
+        <li data-i18n="pp_app_li3">je systeemtaal, zodat we weten welke vertalingen we moeten toevoegen</li>
+      </ul>
+    </div>
+    <p data-i18n="pp_app_p2">Wat er nooit wordt verstuurd: volledige webadressen, paginatitels, wat je kijkt of leest, je IP-adres, of iets dat jou identificeert. Elke installatie krijgt een willekeurig id dat niets over jou zegt.</p>
+
+    <h2 data-i18n="pp_optout_t">Uitzetten</h2>
+    <p data-i18n="pp_optout_p">In de app: Instellingen, en zet "Anonieme gebruiksstatistieken delen" uit. In de extensie: rechtsklik op het Flobro-icoon, kies Opties en vink het daar uit. Alles blijft daarna precies hetzelfde werken.</p>
+
+    <h2 data-i18n="pp_why_t">Waarom überhaupt iets meten?</h2>
+    <p data-i18n="pp_why_p">Flobro is een gratis, open source zijproject. Weten dat de meeste mensen videosites floaten, of dat veel gebruikers een Nederlands systeem draaien, bepaalt wat er als volgende wordt gebouwd. Dat is het hele verhaal: gebruikscijfers erin, betere app eruit. Er wordt niets verkocht, gedeeld of gecombineerd met andere data.</p>
+
+    <h2 data-i18n="pp_contact_t">Vragen?</h2>
+    <p data-i18n="pp_contact_p">Open een issue op de broncode-repository, dat is dé plek om ons te bereiken. De code is open, dus je kunt ook gewoon nalezen wat hij doet.</p>
+  </main>
+
+  <footer>
+    <div class="cols">
+      <span>© 2016-<span id="year">2026</span> <a href="https://github.com/flobro" rel="noopener">Flobro</a> · <span data-i18n="license">MIT-licentie</span></span>
+      <div class="foot-links">
+        <a href="/nl/code-signing.html" data-i18n="foot_signing">Code signing policy</a>
+        <a href="https://github.com/flobro/flobro-app/wiki" rel="noopener" data-i18n="foot_docs">Documentatie</a>
+        <a href="https://github.com/flobro" rel="noopener" data-i18n="nav_source">Broncode</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
