@@ -89,7 +89,7 @@
   "pp_meta_title": "Privacy - Flobro",
   "pp_meta_desc": "What Flobro collects, what it never collects, and how to switch it off. Privacy explained in plain words, no legalese.",
   "cs_meta_title": "Code signing policy - Flobro",
-  "cs_meta_desc": "How Flobro releases are built and signed, and who can change the code.",
+  "cs_meta_desc": "How Flobro builds and signs its releases: who may change the code, who reviews it, and who approves signing.",
   "faq_kicker": "FAQ",
   "faq_title": "Frequently asked questions.",
   "faq_q1": "How do I keep a browser window always on top?",
