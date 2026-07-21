@@ -1241,7 +1241,17 @@ footer .foot-links {
 }
 /* While the demo auto-cycles, the active tab fills up left to right as a
    countdown to the next use case. JS sets --p (0..1) and drops .cycling
-   the moment a manual pick stops the timer. */
+   the moment a manual pick stops the timer. Registering --p makes it
+   transitionable, so the fill can fade out when the rotation pauses;
+   without @property support it simply empties instantly. */
+@property --p {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+.demo-tabs.fading {
+  transition: --p 0.4s ease;
+}
 .demo-tabs.cycling button.on {
   background: linear-gradient(
     90deg,

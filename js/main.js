@@ -414,15 +414,23 @@ function detectLang() {
   if (!reduced) {
     tabs.classList.add('cycling');
     timer = setInterval(function () {
-      /* never yank the demo around mid-interaction: hold the fill too */
+      /* never yank the demo around mid-interaction. A pausing countdown
+       * reads as broken, so fade the fill out and start over on resume. */
       if (
         win.classList.contains('playing') ||
         win.classList.contains('ended') ||
         win.classList.contains('dragged') ||
         win.matches(':hover') ||
         document.hidden
-      )
+      ) {
+        if (elapsed !== 0) {
+          elapsed = 0;
+          tabs.classList.add('fading');
+          tabs.style.setProperty('--p', '0');
+        }
         return;
+      }
+      tabs.classList.remove('fading');
       elapsed += TICK;
       if (elapsed >= CYCLE) {
         setMode(order[(idx + 1) % order.length]);
