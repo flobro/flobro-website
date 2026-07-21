@@ -98,6 +98,20 @@
   "faq_a2": "The extension floats a tab in a minimal popup without any browser interface, but browsers cannot keep a window above other applications. The desktop app can, so the extension forwards pages to it for true always on top.",
   "faq_q3": "Is Flobro really free?",
   "faq_a3": "Yes. Flobro is free and open source under the MIT license, without accounts or ads. Development runs on voluntary donations.",
-  "faq_q4": "Does Flobro track what I watch?",
-  "faq_a4": "No. Anonymous usage statistics are limited to hostnames only, never full URLs, and can be switched off entirely. The details are in the privacy policy."
+  "faq_q4": "Does Flobro track what I browse?",
+  "faq_a4": "No. Anonymous usage statistics are limited to hostnames only, never full URLs, and can be switched off entirely. The details are in the privacy policy.",
+  "nav_uc": "Use cases",
+  "hero_ext": "Also get the companion Chrome extension",
+  "uc_kicker": "Use cases",
+  "uc_title": "Not just for video.",
+  "uc_sub": "Anything with a URL can float. These are the things Flobro users keep on screen the most.",
+  "uc1_t": "Watch pipelines and dashboards",
+  "uc1_p": "Keep your CI pipeline, Grafana board or status page in the corner of your screen. Green means keep working; red is impossible to miss.",
+  "uc2_t": "Keep a chat in sight",
+  "uc2_p": "Float WhatsApp Web, Slack or a live chat next to your work, without giving it a whole monitor.",
+  "uc3_t": "Stream while you work",
+  "uc3_p": "A match, a talk, a video: snap the window to 16:9, pin it on top and get on with your day.",
+  "demo_tab_video": "Video",
+  "demo_tab_pipeline": "Pipelines",
+  "demo_tab_chat": "Chat"
 }

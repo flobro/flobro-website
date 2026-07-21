@@ -98,6 +98,20 @@
   "faq_a2": "L'extension fait flotter un onglet dans une fenêtre minimale sans interface de navigateur, mais les navigateurs ne peuvent pas maintenir une fenêtre au-dessus des autres applications. L'app de bureau le peut, donc l'extension lui transfère les pages pour un vrai premier plan permanent.",
   "faq_q3": "Flobro est-il vraiment gratuit ?",
   "faq_a3": "Oui. Flobro est gratuit et open source sous licence MIT, sans compte ni publicité. Le développement repose sur des dons volontaires.",
-  "faq_q4": "Flobro suit-il ce que je regarde ?",
-  "faq_a4": "Non. Les statistiques d'utilisation anonymes se limitent aux noms d'hôte, jamais aux URL complètes, et peuvent être entièrement désactivées. Les détails sont dans la politique de confidentialité."
+  "faq_q4": "Flobro suit-il ce que je consulte ?",
+  "faq_a4": "Non. Les statistiques d'utilisation anonymes se limitent aux noms d'hôte, jamais aux URL complètes, et peuvent être entièrement désactivées. Les détails sont dans la politique de confidentialité.",
+  "nav_uc": "Cas d'usage",
+  "hero_ext": "Installez aussi l'extension Chrome associée",
+  "uc_kicker": "Cas d'usage",
+  "uc_title": "Pas seulement pour la vidéo.",
+  "uc_sub": "Tout ce qui a une URL peut flotter. Voici ce que les utilisateurs de Flobro gardent le plus à l'écran.",
+  "uc1_t": "Surveiller pipelines et tableaux de bord",
+  "uc1_p": "Gardez votre pipeline CI, votre tableau Grafana ou une page de statut dans un coin de l'écran. Vert : continuez à travailler ; le rouge est impossible à manquer.",
+  "uc2_t": "Garder une discussion sous les yeux",
+  "uc2_p": "Faites flotter WhatsApp Web, Slack ou un chat en direct à côté de votre travail, sans y consacrer un écran entier.",
+  "uc3_t": "Regarder en travaillant",
+  "uc3_p": "Un match, une conférence, une vidéo : ajustez la fenêtre en 16:9, épinglez-la au-dessus et poursuivez votre journée.",
+  "demo_tab_video": "Vidéo",
+  "demo_tab_pipeline": "Pipelines",
+  "demo_tab_chat": "Chat"
 }

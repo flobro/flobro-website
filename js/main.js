@@ -60,6 +60,30 @@ function detectLang() {
   }
 })();
 
+/* ------------------- hero: companion extension hint -------------------- */
+/* Shown only where the Chrome Web Store link makes sense: desktop
+ * Chromium-family browsers (Chrome, Edge, Brave, Opera, Vivaldi). */
+(function () {
+  var link = document.getElementById('hero-ext');
+  if (!link) return;
+  var ua = navigator.userAgent || '';
+  var mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(ua);
+  var chromiumLike = false;
+  if (navigator.userAgentData && navigator.userAgentData.brands) {
+    chromiumLike = navigator.userAgentData.brands.some(function (b) {
+      return /chromium|chrome/i.test(b.brand);
+    });
+  } else {
+    chromiumLike = /Chrome\/|Chromium\//.test(ua) && !/Firefox\//.test(ua);
+  }
+  if (chromiumLike && !mobile) {
+    link.hidden = false;
+    link.addEventListener('click', function () {
+      phTrack('extension_click', { placement: 'hero' });
+    });
+  }
+})();
+
 /* ------------------------- dynamic footer year ------------------------- */
 (function () {
   var y = document.getElementById('year');
@@ -326,6 +350,123 @@ function detectLang() {
     });
     closeIcon.addEventListener('click', resetWindowPosition);
   }
+})();
+
+/* --------------------- demo window: use-case tabs ----------------------- */
+/* The hero window cycles through the three main use cases (video,
+ * pipelines, chat) so nobody mistakes Flobro for a video-only tool.
+ * A manual pick stops the auto-cycle; the video easter eggs stay intact. */
+(function () {
+  var win = document.getElementById('demo-window');
+  var tabs = document.getElementById('demo-tabs');
+  if (!win || !tabs) return;
+  var buttons = Array.prototype.slice.call(tabs.querySelectorAll('button'));
+  var order = ['video', 'pipeline', 'chat'];
+  var idx = 0;
+  var timer = null;
+
+  function setMode(mode) {
+    win.classList.remove('mode-pipeline', 'mode-chat');
+    if (mode !== 'video') win.classList.add('mode-' + mode);
+    buttons.forEach(function (b) {
+      b.classList.toggle('on', b.dataset.mode === mode);
+    });
+    idx = order.indexOf(mode);
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      clearInterval(timer);
+      timer = null;
+      setMode(b.dataset.mode);
+    });
+  });
+
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced) {
+    timer = setInterval(function () {
+      /* never yank the demo around mid-interaction */
+      if (
+        win.classList.contains('playing') ||
+        win.classList.contains('ended') ||
+        win.classList.contains('dragged') ||
+        win.matches(':hover')
+      )
+        return;
+      setMode(order[(idx + 1) % order.length]);
+    }, 5000);
+  }
+})();
+
+/* ------------------ "Entering the Matrix" easter egg -------------------- */
+/* Clicking Inspect in the fake context menu does what Inspect always
+ * secretly promised. Runs a few seconds, then politely leaves. */
+(function () {
+  var row = document.getElementById('mock-inspect');
+  if (!row) return;
+  var busy = false;
+  row.addEventListener('click', function () {
+    if (busy) return;
+    busy = true;
+    var c = document.createElement('canvas');
+    c.className = 'matrix-rain';
+    document.body.appendChild(c);
+    var ctx = c.getContext('2d');
+    var size = 16;
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
+    var W = c.width;
+    var H = c.height;
+    var cols = Math.floor(W / size);
+    var drops = [];
+    for (var i = 0; i < cols; i++) drops[i] = 0 - ((Math.random() * 40) | 0);
+    var GLYPHS = 'アイウエオカキクケコサシスセソタチツテト0123456789FLOBRO';
+    var run = true;
+    function draw() {
+      if (!run) return;
+      ctx.fillStyle = 'rgba(0,0,0,0.08)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#00ff6a';
+      ctx.font = size + 'px monospace';
+      for (var i = 0; i < cols; i++) {
+        var ch = GLYPHS[(Math.random() * GLYPHS.length) | 0];
+        ctx.fillText(ch, i * size, drops[i] * size);
+        if (drops[i] * size > H && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(function () {
+      c.classList.add('on');
+    });
+    draw();
+    setTimeout(function () {
+      c.classList.add('out');
+    }, 3600);
+    setTimeout(function () {
+      run = false;
+      c.remove();
+      busy = false;
+    }, 4200);
+  });
+})();
+
+/* ---------------- prefetch language alternates (speculation) ------------ */
+/* Makes the language switch feel instant together with the CSS
+ * view-transition. Prefetch only (no prerender): cheap, and it cannot
+ * fire analytics or run scripts. URLs come from the hreflang cluster. */
+(function () {
+  if (!HTMLScriptElement.supports || !HTMLScriptElement.supports('speculationrules')) return;
+  var urls = {};
+  document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(function (l) {
+    if (l.href && l.href !== location.href) urls[l.href] = true;
+  });
+  var list = Object.keys(urls);
+  if (!list.length) return;
+  var s = document.createElement('script');
+  s.type = 'speculationrules';
+  s.textContent = JSON.stringify({ prefetch: [{ source: 'list', urls: list }] });
+  document.head.appendChild(s);
 })();
 
 /* ----------------------- funnel tracking helpers ----------------------- */

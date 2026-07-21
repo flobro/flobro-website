@@ -98,6 +98,20 @@
   "faq_a2": "De extensie laat een tabblad zweven in een minimale popup zonder browserinterface, maar browsers kunnen een venster niet boven andere applicaties houden. De desktop-app kan dat wel, dus de extensie stuurt pagina’s ernaartoe voor echt altijd bovenaan.",
   "faq_q3": "Is Flobro echt gratis?",
   "faq_a3": "Ja. Flobro is gratis en open source onder de MIT-licentie, zonder accounts of advertenties. De ontwikkeling draait op vrijwillige donaties.",
-  "faq_q4": "Volgt Flobro wat ik kijk?",
-  "faq_a4": "Nee. Anonieme gebruiksstatistieken zijn beperkt tot alleen hostnames, nooit volledige URL’s, en zijn volledig uit te zetten. De details staan in het privacybeleid."
+  "faq_q4": "Houdt Flobro bij wat ik bezoek?",
+  "faq_a4": "Nee. Anonieme gebruiksstatistieken zijn beperkt tot alleen hostnames, nooit volledige URL’s, en zijn volledig uit te zetten. De details staan in het privacybeleid.",
+  "nav_uc": "Toepassingen",
+  "hero_ext": "Installeer ook de bijbehorende Chrome-extensie",
+  "uc_kicker": "Toepassingen",
+  "uc_title": "Niet alleen voor video.",
+  "uc_sub": "Alles met een URL kan zweven. Dit houden Flobro-gebruikers het vaakst op hun scherm.",
+  "uc1_t": "Volg pipelines en dashboards",
+  "uc1_p": "Houd je CI-pipeline, Grafana-bord of statuspagina in de hoek van je scherm. Groen betekent doorwerken; rood is onmogelijk te missen.",
+  "uc2_t": "Houd een chat in beeld",
+  "uc2_p": "Laat WhatsApp Web, Slack of een livechat naast je werk zweven, zonder er een heel scherm aan te geven.",
+  "uc3_t": "Stream terwijl je werkt",
+  "uc3_p": "Een wedstrijd, een talk, een video: klik het venster naar 16:9, pin het bovenaan en ga verder met je dag.",
+  "demo_tab_video": "Video",
+  "demo_tab_pipeline": "Pipelines",
+  "demo_tab_chat": "Chat"
 }

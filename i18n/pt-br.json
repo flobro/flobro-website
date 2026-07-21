@@ -98,6 +98,20 @@
   "faq_a2": "A extensão flutua uma aba em uma janela mínima sem interface de navegador, mas navegadores não conseguem manter uma janela acima de outros aplicativos. O aplicativo de desktop consegue, então a extensão envia as páginas para ele para ficar realmente sempre no topo.",
   "faq_q3": "O Flobro é realmente gratuito?",
   "faq_a3": "Sim. O Flobro é gratuito e de código aberto sob a licença MIT, sem contas nem anúncios. O desenvolvimento é mantido por doações voluntárias.",
-  "faq_q4": "O Flobro rastreia o que eu assisto?",
-  "faq_a4": "Não. As estatísticas anônimas de uso se limitam a nomes de host, nunca URLs completas, e podem ser desligadas por completo. Os detalhes estão na política de privacidade."
+  "faq_q4": "O Flobro rastreia o que eu navego?",
+  "faq_a4": "Não. As estatísticas anônimas de uso se limitam a nomes de host, nunca URLs completas, e podem ser desligadas por completo. Os detalhes estão na política de privacidade.",
+  "nav_uc": "Casos de uso",
+  "hero_ext": "Instale também a extensão para Chrome",
+  "uc_kicker": "Casos de uso",
+  "uc_title": "Não é só para vídeo.",
+  "uc_sub": "Tudo que tem uma URL pode flutuar. Isto é o que os usuários do Flobro mais mantêm na tela.",
+  "uc1_t": "Acompanhe pipelines e dashboards",
+  "uc1_p": "Mantenha seu pipeline de CI, painel do Grafana ou página de status no canto da tela. Verde significa seguir trabalhando; o vermelho é impossível de ignorar.",
+  "uc2_t": "Mantenha um chat à vista",
+  "uc2_p": "Deixe o WhatsApp Web, o Slack ou um chat ao vivo flutuando ao lado do trabalho, sem dedicar um monitor inteiro a ele.",
+  "uc3_t": "Assista enquanto trabalha",
+  "uc3_p": "Um jogo, uma palestra, um vídeo: ajuste a janela para 16:9, fixe no topo e siga com o seu dia.",
+  "demo_tab_video": "Vídeo",
+  "demo_tab_pipeline": "Pipelines",
+  "demo_tab_chat": "Chat"
 }

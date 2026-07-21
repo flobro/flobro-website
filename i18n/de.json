@@ -98,6 +98,20 @@
   "faq_a2": "Die Erweiterung lässt einen Tab in einem minimalen Fenster ohne Browseroberfläche schweben, aber Browser können ein Fenster nicht über anderen Anwendungen halten. Die Desktop-App kann das, deshalb leitet die Erweiterung Seiten für echtes Immer-im-Vordergrund an sie weiter.",
   "faq_q3": "Ist Flobro wirklich kostenlos?",
   "faq_a3": "Ja. Flobro ist kostenlos und Open Source unter MIT-Lizenz, ohne Konten und ohne Werbung. Die Entwicklung wird durch freiwillige Spenden getragen.",
-  "faq_q4": "Verfolgt Flobro, was ich schaue?",
-  "faq_a4": "Nein. Anonyme Nutzungsstatistiken sind auf Hostnamen beschränkt, niemals vollständige URLs, und lassen sich komplett abschalten. Die Details stehen in der Datenschutzerklärung."
+  "faq_q4": "Verfolgt Flobro, was ich besuche?",
+  "faq_a4": "Nein. Anonyme Nutzungsstatistiken sind auf Hostnamen beschränkt, niemals vollständige URLs, und lassen sich komplett abschalten. Die Details stehen in der Datenschutzerklärung.",
+  "nav_uc": "Einsatzzwecke",
+  "hero_ext": "Installiere auch die passende Chrome-Erweiterung",
+  "uc_kicker": "Einsatzzwecke",
+  "uc_title": "Nicht nur für Video.",
+  "uc_sub": "Alles mit einer URL kann schweben. Das behalten Flobro-Nutzer am häufigsten im Blick.",
+  "uc1_t": "Pipelines und Dashboards beobachten",
+  "uc1_p": "Behalte deine CI-Pipeline, dein Grafana-Board oder eine Statusseite in der Bildschirmecke. Grün heißt weiterarbeiten; Rot ist unmöglich zu übersehen.",
+  "uc2_t": "Einen Chat im Blick behalten",
+  "uc2_p": "Lass WhatsApp Web, Slack oder einen Live-Chat neben deiner Arbeit schweben, ohne dafür einen ganzen Monitor zu opfern.",
+  "uc3_t": "Streamen und weiterarbeiten",
+  "uc3_p": "Ein Spiel, ein Vortrag, ein Video: Fenster auf 16:9 einrasten, oben anpinnen und weiter geht es.",
+  "demo_tab_video": "Video",
+  "demo_tab_pipeline": "Pipelines",
+  "demo_tab_chat": "Chat"
 }

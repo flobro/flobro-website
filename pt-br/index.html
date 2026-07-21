@@ -91,7 +91,7 @@
       },
       {
         "@type": "Question",
-        "name": "O Flobro rastreia o que eu assisto?",
+        "name": "O Flobro rastreia o que eu navego?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Não. As estatísticas anônimas de uso se limitam a nomes de host, nunca URLs completas, e podem ser desligadas por completo. Os detalhes estão na política de privacidade."
@@ -117,6 +117,7 @@
       <div class="links">
         <a href="#features" data-i18n="nav_features">Recursos</a>
         <a href="#how" data-i18n="nav_how">Como funciona</a>
+        <a href="#use-cases" data-i18n="nav_uc">Casos de uso</a>
         <a href="#extension" data-i18n="nav_ext">Extensão</a>
         <a class="nav-cta keep" id="nav-download" href="https://github.com/flobro/flobro-app/releases/latest" data-i18n="nav_download">Baixar</a>
         <select class="lang-toggle keep" id="lang-select" aria-label="Language">
@@ -146,6 +147,7 @@
           </a>
           <a class="btn ghost" id="dl-secondary" data-mac="Também no Mac" data-win="Também no Windows" href="https://github.com/flobro/flobro-app/releases/latest" data-i18n="dl_also_win">Também no Windows</a>
           <span class="cta-note" data-i18n="dl_note">Gratuito e de código aberto. Licença MIT. Download de ~5 MB.</span>
+          <a class="hero-ext" id="hero-ext" href="https://chromewebstore.google.com/detail/lbjfjhfnjdcglaecgbhkbbfhebccomlh" rel="noopener" hidden data-i18n="hero_ext">Instale também a extensão para Chrome</a>
         </div>
       </div>
 
@@ -183,8 +185,26 @@
             <i style="--m: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><path d=%22M3 12h10%22 stroke=%22black%22 stroke-width=%222.4%22 stroke-linecap=%22round%22/></svg>')"></i>
             <i class="x" style="--m: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><path d=%22M4 4l8 8M12 4l-8 8%22 stroke=%22black%22 stroke-width=%222.4%22 stroke-linecap=%22round%22/></svg>')"></i>
           </div>
+          <div class="demo-view dv-pipeline" aria-hidden="true">
+            <div class="pl-row"><span class="pl-dot ok"></span><span class="pl-bar" style="width:62%"></span><span class="pl-time">2m 14s</span></div>
+            <div class="pl-row"><span class="pl-dot ok"></span><span class="pl-bar" style="width:48%"></span><span class="pl-time">1m 03s</span></div>
+            <div class="pl-row"><span class="pl-dot run"></span><span class="pl-bar" style="width:71%"></span><span class="pl-time">0m 41s</span></div>
+            <div class="pl-row"><span class="pl-dot wait"></span><span class="pl-bar" style="width:39%"></span><span class="pl-time">·</span></div>
+          </div>
+          <div class="demo-view dv-chat" aria-hidden="true">
+            <span class="ch l" style="width:56%"></span>
+            <span class="ch r" style="width:40%"></span>
+            <span class="ch l" style="width:34%"></span>
+            <span class="ch r" style="width:62%"></span>
+            <span class="ch l typing"><i></i><i></i><i></i></span>
+          </div>
           <button type="button" class="play" id="demo-play" aria-label="Play"></button>
           <div class="bar"><b id="demo-progress"></b></div>
+        </div>
+        <div class="demo-tabs" id="demo-tabs">
+          <button type="button" class="on" data-mode="video" data-i18n="demo_tab_video">Vídeo</button>
+          <button type="button" data-mode="pipeline" data-i18n="demo_tab_pipeline">Pipelines</button>
+          <button type="button" data-mode="chat" data-i18n="demo_tab_chat">Chat</button>
         </div>
         <div class="demo-hint" data-i18n="demo_hint">↑ passe o mouse sobre a janela, essa é toda a interface</div>
       </div>
@@ -254,6 +274,29 @@
     </div>
   </section>
 
+  <section id="use-cases">
+    <div class="kicker" data-i18n="uc_kicker">Casos de uso</div>
+    <h2 data-i18n="uc_title">Não é só para vídeo.</h2>
+    <p class="section-sub" data-i18n="uc_sub">Tudo que tem uma URL pode flutuar. Isto é o que os usuários do Flobro mais mantêm na tela.</p>
+    <div class="features usecases">
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg></div>
+        <h3 data-i18n="uc1_t">Acompanhe pipelines e dashboards</h3>
+        <p data-i18n="uc1_p">Mantenha seu pipeline de CI, painel do Grafana ou página de status no canto da tela. Verde significa seguir trabalhando; o vermelho é impossível de ignorar.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z"/><path d="M8 11h8M8 14h5"/></svg></div>
+        <h3 data-i18n="uc2_t">Mantenha um chat à vista</h3>
+        <p data-i18n="uc2_p">Deixe o WhatsApp Web, o Slack ou um chat ao vivo flutuando ao lado do trabalho, sem dedicar um monitor inteiro a ele.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg></div>
+        <h3 data-i18n="uc3_t">Assista enquanto trabalha</h3>
+        <p data-i18n="uc3_p">Um jogo, uma palestra, um vídeo: ajuste a janela para 16:9, fixe no topo e siga com o seu dia.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="extension">
     <div class="ext">
       <div>
@@ -270,11 +313,11 @@
         <div class="row"><span data-i18n="m1">Abrir link em nova aba</span></div>
         <div class="row"><span data-i18n="m2">Abrir link em nova janela</span></div>
         <hr>
-        <div class="row hl"><span class="swatch"></span><span data-i18n="m3">Flutuar este link</span></div>
-        <div class="row"><span class="swatch" style="opacity:.35"></span><span data-i18n="m4">Abrir link no aplicativo Flobro</span></div>
+        <div class="row hl"><svg class="mico" viewBox="0 0 512 512" aria-hidden="true"><rect x="88" y="188" width="272" height="212" rx="44" fill="none" stroke="#248BD2" stroke-opacity="0.35" stroke-width="28"/><rect x="168" y="104" width="272" height="212" rx="44" fill="#248BD2"/></svg><span data-i18n="m3">Flutuar este link</span></div>
+        <div class="row"><span class="mico-dim"><svg class="mico" viewBox="0 0 512 512" aria-hidden="true"><rect x="88" y="188" width="272" height="212" rx="44" fill="none" stroke="#248BD2" stroke-opacity="0.35" stroke-width="28"/><rect x="168" y="104" width="272" height="212" rx="44" fill="#248BD2"/></svg></span><span data-i18n="m4">Abrir link no aplicativo Flobro</span></div>
         <hr>
         <div class="row"><span data-i18n="m5">Copiar endereço do link</span></div>
-        <div class="row"><span data-i18n="m6">Inspecionar</span></div>
+        <div class="row inspect" id="mock-inspect"><span data-i18n="m6">Inspecionar</span></div>
       </div>
     </div>
   </section>
@@ -296,7 +339,7 @@
         <p data-i18n="faq_a3">Sim. O Flobro é gratuito e de código aberto sob a licença MIT, sem contas nem anúncios. O desenvolvimento é mantido por doações voluntárias.</p>
       </details>
       <details>
-        <summary data-i18n="faq_q4">O Flobro rastreia o que eu assisto?</summary>
+        <summary data-i18n="faq_q4">O Flobro rastreia o que eu navego?</summary>
         <p data-i18n="faq_a4">Não. As estatísticas anônimas de uso se limitam a nomes de host, nunca URLs completas, e podem ser desligadas por completo. Os detalhes estão na política de privacidade.</p>
       </details>
     </div>
