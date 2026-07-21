@@ -1241,23 +1241,26 @@ footer .foot-links {
 }
 /* While the demo auto-cycles, the active tab fills up left to right as a
    countdown to the next use case. JS sets --p (0..1) and drops .cycling
-   the moment a manual pick stops the timer. Registering --p makes it
-   transitionable, so the fill can fade out when the rotation pauses;
-   without @property support it simply empties instantly. */
-@property --p {
-  syntax: '<number>';
+   the moment a manual pick stops the timer. While rotation is paused the
+   fill color fades into the pill color (--p keeps its value); registering
+   --fill makes the color transitionable, without @property support it
+   simply disappears instantly. */
+@property --fill {
+  syntax: "<color>";
   inherits: true;
-  initial-value: 0;
-}
-.demo-tabs.fading {
-  transition: --p 0.4s ease;
+  initial-value: transparent;
 }
 .demo-tabs.cycling button.on {
+  --fill: var(--blue-deep);
+  transition: --fill 0.4s ease;
   background: linear-gradient(
     90deg,
-    var(--blue-deep) calc(var(--p, 0) * 100%),
+    var(--fill) calc(var(--p, 0) * 100%),
     var(--blue) calc(var(--p, 0) * 100%)
   );
+}
+.demo-tabs.cycling.paused button.on {
+  --fill: var(--blue);
 }
 
 /* ---------- context menu mock: real mark, clickable Inspect ---------- */

@@ -398,7 +398,7 @@ function detectLang() {
     if (!timer) return;
     clearInterval(timer);
     timer = null;
-    tabs.classList.remove('cycling');
+    tabs.classList.remove('cycling', 'paused');
     tabs.style.removeProperty('--p');
   }
 
@@ -415,7 +415,8 @@ function detectLang() {
     tabs.classList.add('cycling');
     timer = setInterval(function () {
       /* never yank the demo around mid-interaction. A pausing countdown
-       * reads as broken, so fade the fill out and start over on resume. */
+       * reads as broken, so fade the fill out; --p keeps its value and
+       * the fill fades back in when the rotation resumes. */
       if (
         win.classList.contains('playing') ||
         win.classList.contains('ended') ||
@@ -423,14 +424,10 @@ function detectLang() {
         win.matches(':hover') ||
         document.hidden
       ) {
-        if (elapsed !== 0) {
-          elapsed = 0;
-          tabs.classList.add('fading');
-          tabs.style.setProperty('--p', '0');
-        }
+        tabs.classList.add('paused');
         return;
       }
-      tabs.classList.remove('fading');
+      tabs.classList.remove('paused');
       elapsed += TICK;
       if (elapsed >= CYCLE) {
         setMode(order[(idx + 1) % order.length]);
