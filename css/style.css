@@ -171,6 +171,11 @@ nav .links a:not(.nav-cta):hover::after {
   transform: translateY(-1px);
   box-shadow: 0 6px 16px rgba(22, 104, 168, 0.32);
 }
+/* Download is the nav CTA on desktop; on mobile it is useless (installers are
+   desktop-only), so the Source link takes its place there. */
+.nav-cta-mobile {
+  display: none;
+}
 .lang-toggle {
   all: unset;
   cursor: pointer;
@@ -1001,6 +1006,24 @@ footer .foot-links {
   }
   nav .links a:not(.keep):not(.nav-cta) {
     display: none;
+  }
+  .nav-cta-desktop {
+    display: none;
+  }
+  .nav-cta-mobile {
+    display: inline-block;
+  }
+  footer .cols {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+  footer .foot-links {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px 26px;
+    justify-content: center;
   }
 }
 @media (prefers-reduced-motion: reduce) {
