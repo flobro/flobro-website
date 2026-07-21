@@ -251,6 +251,7 @@ function detectLang() {
     if (win.classList.contains('ended')) {
       /* pause button resets the broken TV */
       resetPlayer();
+      phTrack('demo_interact', { action: 'tv-reset' });
       return;
     }
 
@@ -259,11 +260,15 @@ function detectLang() {
     void win.offsetWidth;
     win.classList.add('wiggle');
     confettiBurst();
+    phTrack('demo_interact', {
+      action: win.classList.contains('playing') ? 'play' : 'pause',
+    });
 
     /* triple-click within 900ms: the real thing, in a real floating window */
     if (clickTimes.length >= 3 && !rickrolled) {
       rickrolled = true;
       clickTimes = [];
+      phTrack('demo_interact', { action: 'rickroll' });
       window.open(
         'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
         'flobroDemo',
@@ -306,7 +311,13 @@ function detectLang() {
     if (e.button !== undefined && e.button !== 0) return;
     if (e.target && e.target.classList && e.target.classList.contains('x')) return;
     var winRect = win.getBoundingClientRect();
-    drag = { dx: e.clientX - winRect.left, dy: e.clientY - winRect.top };
+    drag = {
+      dx: e.clientX - winRect.left,
+      dy: e.clientY - winRect.top,
+      x0: e.clientX,
+      y0: e.clientY,
+      moved: false,
+    };
     /* freeze the current size so going fixed doesn't change it */
     win.style.width = winRect.width + 'px';
     win.classList.add('dragged', 'dragging');
@@ -319,11 +330,14 @@ function detectLang() {
   }
   function moveDrag(e) {
     if (!drag) return;
+    if (Math.abs(e.clientX - drag.x0) + Math.abs(e.clientY - drag.y0) > 6) drag.moved = true;
     win.style.left = e.clientX - drag.dx + 'px';
     win.style.top = Math.max(0, e.clientY - drag.dy) + 'px';
   }
   function endDrag(e) {
     if (!drag) return;
+    /* a click on the toolbar is not a drag; only count real moves */
+    if (drag.moved) phTrack('demo_interact', { action: 'drag' });
     drag = null;
     win.classList.remove('dragging');
     try {
@@ -364,6 +378,9 @@ function detectLang() {
   var order = ['video', 'pipeline', 'chat'];
   var idx = 0;
   var timer = null;
+  var TICK = 100; /* ms between progress updates */
+  var CYCLE = 5000; /* ms per use case */
+  var elapsed = 0;
 
   function setMode(mode) {
     win.classList.remove('mode-pipeline', 'mode-chat');
@@ -372,29 +389,47 @@ function detectLang() {
       b.classList.toggle('on', b.dataset.mode === mode);
     });
     idx = order.indexOf(mode);
+    elapsed = 0;
+    tabs.style.setProperty('--p', '0');
+  }
+
+  /* a manual pick stops the auto-cycle for good, fill included */
+  function stopCycle() {
+    if (!timer) return;
+    clearInterval(timer);
+    timer = null;
+    tabs.classList.remove('cycling');
+    tabs.style.removeProperty('--p');
   }
 
   buttons.forEach(function (b) {
     b.addEventListener('click', function () {
-      clearInterval(timer);
-      timer = null;
+      stopCycle();
       setMode(b.dataset.mode);
+      phTrack('demo_interact', { action: 'tab', mode: b.dataset.mode });
     });
   });
 
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduced) {
+    tabs.classList.add('cycling');
     timer = setInterval(function () {
-      /* never yank the demo around mid-interaction */
+      /* never yank the demo around mid-interaction: hold the fill too */
       if (
         win.classList.contains('playing') ||
         win.classList.contains('ended') ||
         win.classList.contains('dragged') ||
-        win.matches(':hover')
+        win.matches(':hover') ||
+        document.hidden
       )
         return;
-      setMode(order[(idx + 1) % order.length]);
-    }, 5000);
+      elapsed += TICK;
+      if (elapsed >= CYCLE) {
+        setMode(order[(idx + 1) % order.length]);
+      } else {
+        tabs.style.setProperty('--p', String(elapsed / CYCLE));
+      }
+    }, TICK);
   }
 })();
 
@@ -408,6 +443,7 @@ function detectLang() {
   row.addEventListener('click', function () {
     if (busy) return;
     busy = true;
+    phTrack('demo_interact', { action: 'matrix' });
     var c = document.createElement('canvas');
     c.className = 'matrix-rain';
     document.body.appendChild(c);
@@ -525,6 +561,7 @@ function phTrack(event, props) {
         } else {
           body.style.setProperty('--konami-hue', Math.floor(Math.random() * 360) + 'deg');
           body.classList.add('konami');
+          phTrack('demo_interact', { action: 'konami' });
         }
       }
     } else {

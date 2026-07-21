@@ -1216,6 +1216,9 @@ footer .foot-links {
   }
 }
 .demo-tabs {
+  /* demo-back is absolutely positioned; without a stacking context the
+     tabs paint underneath it and miss their clicks */
+  position: relative;
   display: flex;
   justify-content: center;
   gap: 8px;
@@ -1235,6 +1238,16 @@ footer .foot-links {
   background: var(--blue);
   border-color: var(--blue);
   color: #fff;
+}
+/* While the demo auto-cycles, the active tab fills up left to right as a
+   countdown to the next use case. JS sets --p (0..1) and drops .cycling
+   the moment a manual pick stops the timer. */
+.demo-tabs.cycling button.on {
+  background: linear-gradient(
+    90deg,
+    var(--blue-deep) calc(var(--p, 0) * 100%),
+    var(--blue) calc(var(--p, 0) * 100%)
+  );
 }
 
 /* ---------- context menu mock: real mark, clickable Inspect ---------- */
