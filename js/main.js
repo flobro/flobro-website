@@ -582,10 +582,11 @@ function phTrack(event, props) {
   var PH_KEY = 'phc_tmfA5uemSD7TscmzLWQPAiqYXxfNartjfYsrjWQ6rEot';
   if (PH_KEY.indexOf('REPLACE_ME') !== -1) return;
   var s = document.createElement('script');
-  s.src = 'https://eu-assets.i.posthog.com/static/array.js';
+  s.src = 'https://s.flobro.app/static/array.js';
   s.onload = function () {
     window.posthog.init(PH_KEY, {
-      api_host: 'https://eu.i.posthog.com',
+      api_host: 'https://s.flobro.app',
+      defaults: '2026-05-30',
       persistence: 'memory',
       autocapture: false,
       capture_pageview: true,
